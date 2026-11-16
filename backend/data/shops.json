@@ -1,0 +1,12 @@
+{
+  "_note": "SAMPLE shop data copied from the ShopSense mockup (screen 08). Not real businesses. price_index = this shop's typical price vs. the area median (0.84 = 16% cheaper). upsell_rate_pct = share of this shop's quotes that contained not-due items.",
+  "shops": [
+    { "id": "here",  "name": "Westgate Honda",        "type": "dealer",      "distance_mi": 0.0,  "rating": 4.1, "owner_reports": 322, "price_index": 1.25, "upsell_rate_pct": 61 },
+    { "id": "north", "name": "Northside Auto Care",   "type": "independent", "distance_mi": 2.1,  "rating": 4.7, "owner_reports": 214, "price_index": 0.84, "upsell_rate_pct": 12 },
+    { "id": "elm",   "name": "Elm St. Garage",        "type": "independent", "distance_mi": 3.4,  "rating": 4.8, "owner_reports": 96,  "price_index": 0.92, "upsell_rate_pct": 8 },
+    { "id": "rapid", "name": "Rapid Lube Express",    "type": "quick-lube",  "distance_mi": 4.8,  "rating": 3.9, "owner_reports": 410, "price_index": 0.79, "upsell_rate_pct": 54 },
+    { "id": "han",   "name": "Hanover Imports",       "type": "independent", "distance_mi": 7.9,  "rating": 4.5, "owner_reports": 61,  "price_index": 1.06, "upsell_rate_pct": 19 },
+    { "id": "cedar", "name": "Cedar Park Auto",       "type": "independent", "distance_mi": 12.5, "rating": 4.6, "owner_reports": 148, "price_index": 0.75, "upsell_rate_pct": 15 },
+    { "id": "ridge", "name": "Ridgeline Service Co.", "type": "independent", "distance_mi": 18.2, "rating": 4.4, "owner_reports": 39,  "price_index": 0.71, "upsell_rate_pct": 22 }
+  ]
+}

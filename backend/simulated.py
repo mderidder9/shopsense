@@ -1,0 +1,44 @@
+"""Canned answer used when config.json has "mode": "simulated".
+
+Same shape as the real model's answer, so the screens work identically.
+Numbers match the original mockup (2017 Accord at 68,420 mi).
+"""
+
+
+def simulated_result(vehicle: dict, shops: list[dict]) -> dict:
+    name = f"{vehicle['year']} {vehicle['make']} {vehicle['model']}"
+    ranked = sorted(
+        (s for s in shops if s["id"] != "here"),
+        key=lambda s: (s["upsell_rate_pct"], -s["rating"], s["price_index"]),
+    )[:3]
+    return {
+        "vehicle_summary": f"SIMULATED · {name} at {int(vehicle['mileage']):,} mi",
+        "manual_matches_vehicle": "yes",
+        "manual_match_note": "Simulated response - the manual was not read.",
+        "schedule_used": "normal",
+        "services": [
+            {"service": "Engine oil & filter", "status": "needed_now", "next_due_miles": 67500,
+             "interval_from_manual": "Every 7,500 mi", "manual_reference": "Simulated",
+             "explanation": "Due at 67,500 mi - you are 920 mi past.", "safety_critical": False, "confidence": 0.95},
+            {"service": "Tire rotation", "status": "needed_now", "next_due_miles": 67500,
+             "interval_from_manual": "Every 7,500 mi", "manual_reference": "Simulated",
+             "explanation": "Rotate with the oil change.", "safety_critical": False, "confidence": 0.9},
+            {"service": "Engine air filter", "status": "due_soon", "next_due_miles": 75000,
+             "interval_from_manual": "Every 30,000 mi", "manual_reference": "Simulated",
+             "explanation": "Due at 75,000 mi. Fine to do now if the price is fair.", "safety_critical": False, "confidence": 0.85},
+            {"service": "Brake pads", "status": "inspect", "next_due_miles": None,
+             "interval_from_manual": "By inspection", "manual_reference": "Simulated",
+             "explanation": "Ask for the pad measurement. Replace under 3 mm.", "safety_critical": True, "confidence": 0.7},
+            {"service": "Transmission fluid", "status": "not_due", "next_due_miles": 90000,
+             "interval_from_manual": "Every 30,000 mi", "manual_reference": "Simulated",
+             "explanation": "Not due until 90,000 mi. Drain & fill, not flush.", "safety_critical": False, "confidence": 0.85},
+        ],
+        "shop_recommendations": [
+            {"rank": i + 1, "shop_id": s["id"], "shop_name": s["name"],
+             "reason": f"Simulated: {s['upsell_rate_pct']}% upsell rate, rated {s['rating']}, {s['distance_mi']} mi away.",
+             "confidence": 0.6}
+            for i, s in enumerate(ranked)
+        ],
+        "overall_confidence": 0.8,
+        "warnings": ["Simulated response - set \"mode\": \"live\" in config.json to call the real AI."],
+    }

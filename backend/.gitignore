@@ -1,0 +1,9 @@
+# Secrets - never commit
+.env
+
+# Local Python environment
+.venv/
+__pycache__/
+
+# Test logs (may contain inputs you don't want to publish)
+logs/

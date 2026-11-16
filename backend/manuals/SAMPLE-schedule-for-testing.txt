@@ -1,0 +1,69 @@
+=====================================================================
+SAMPLE MAINTENANCE SCHEDULE - FOR TESTING SHOPSENSE ONLY
+This text was written by the ShopSense team as a stand-in. It is NOT
+copied from any manufacturer's owner's manual and its intervals are
+illustrative. For real results, upload the actual owner's manual PDF
+for the vehicle (e.g. from owners.honda.com -> Owner's Manuals).
+=====================================================================
+
+Vehicle family: mid-size sedan, 2.4L 4-cylinder, model years 2016-2018
+
+SECTION 6 - MAINTENANCE  (page 6-1)
+
+6.1 How to use this schedule (page 6-1)
+Follow the NORMAL schedule unless the vehicle is driven mainly in any of
+these SEVERE conditions: trips under 5 miles, extreme heat or cold,
+towing, dusty or unpaved roads, extended idling. Under SEVERE conditions
+use the shorter interval shown in brackets [ ].
+Do each service at the mileage OR time shown, whichever comes first.
+
+6.2 Scheduled maintenance (page 6-2)
+
+  Engine oil and filter (synthetic 0W-20)
+      Every 7,500 mi or 12 months   [severe: every 5,000 mi or 6 months]
+
+  Tire rotation
+      Every 7,500 mi
+
+  Inspect brakes (pads, rotors, lines), suspension, steering, exhaust,
+  fluid levels, lights, wipers, belts and hoses
+      Every 15,000 mi or 12 months
+
+  Cabin air (dust and pollen) filter
+      Every 15,000 mi                [severe: every 7,500 mi]
+
+  Engine air filter
+      Every 30,000 mi                [severe: every 15,000 mi]
+
+  Brake fluid
+      Every 3 years, regardless of mileage
+
+  Continuously variable transmission (CVT) fluid - drain and refill
+      Every 30,000 mi                [severe: every 25,000 mi]
+      NOTE: This vehicle requires a drain-and-refill. A pressure
+      "flush" of the transmission is NOT recommended.
+
+  Spark plugs (iridium)
+      Every 105,000 mi
+
+  Valve clearance - inspect and adjust if noisy
+      Every 105,000 mi
+
+  Engine coolant
+      First at 120,000 mi or 10 years, then every 60,000 mi or 5 years
+
+  Drive belt - inspect
+      Every 60,000 mi
+
+6.3 Items NOT on the schedule (page 6-4)
+The following are not required maintenance for this engine and are only
+needed if a specific problem is diagnosed: fuel injection / fuel system
+cleaning, engine "decarbonizing", power steering flush (electric power
+steering - no fluid).
+
+6.4 Wear items (page 6-4)
+Brake pads, tires, wiper blades and the 12V battery wear at different
+rates. Replace based on inspection, not mileage:
+  - Brake pads: replace below 3 mm (0.12 in) of pad material.
+  - Tires: replace below 2/32 in tread depth.
+  - Battery: replace if it fails a load test.

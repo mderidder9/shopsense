@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"><style>body{margin:0;background:#201e1d}a{color:#a8200b}a:hover{color:#ec3013}*{box-sizing:border-box}</style></helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Title" data-speaker-notes="ShopSense is an independent second opinion for car owners at the service counter. These are the first UI mockups covering the full flow, from sign-up to lifetime savings." style="background:#ec3013;color:#ffffff;font-family:Archivo,sans-serif;padding:100px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="font:600 28px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase">UI mockups · v1</div>
+<div style="display:flex;flex-direction:column;gap:32px">
+<h1 style="margin:0;font:800 220px/0.9 Archivo;letter-spacing:-.04em">ShopSense</h1>
+<p style="margin:0;font:400 48px/1.25 Archivo;max-width:1300px;text-wrap:pretty">An independent second opinion on repair quotes, right at the service counter.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:3px solid #ffffff;padding-top:24px;font:600 28px Archivo"><span>Building an AI Company</span><span>F26</span><span>November 2026</span></div>
+</section>
+
+<section data-label="Problem" data-speaker-notes="Recap of the opportunity. The owner has five minutes at the counter and no unbiased expert. AI makes vehicle-specific advice instant and cheap." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:flex;flex-direction:column;gap:64px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">The problem</span>
+<h2 style="margin:0;font:800 72px/1.05 Archivo;letter-spacing:-.02em;max-width:1500px">Car owners can't judge shop recommendations at the counter</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-top:3px solid #201e1d;flex:1">
+<div style="padding:36px 40px 0 0;display:flex;flex-direction:column;gap:20px"><span style="font:800 36px Archivo">Job to be done</span><p style="margin:0;font:400 32px/1.4 Archivo;text-wrap:pretty">Know quickly what my car actually needs at its mileage, so I approve the right work without overpaying or skipping something important.</p></div>
+<div style="padding:36px 40px 0;border-left:3px solid #201e1d;display:flex;flex-direction:column;gap:20px"><span style="font:800 36px Archivo">Binding constraint</span><p style="margin:0;font:400 32px/1.4 Archivo;text-wrap:pretty">The time and cost of turning scattered maintenance knowledge into a personal answer at the moment of decision.</p></div>
+<div style="padding:36px 0 0 40px;border-left:3px solid #201e1d;display:flex;flex-direction:column;gap:20px"><span style="font:800 36px Archivo">Scarce capability</span><p style="margin:0;font:400 32px/1.4 Archivo;text-wrap:pretty">Unbiased, vehicle-specific expertise. Today it sits mostly with the people selling the service.</p></div>
+</div>
+</section>
+
+<section data-label="Flow" data-speaker-notes="Ten screens in four stages. Setup creates the vehicle profile; capture turns a quote into structured data; the verdict screen is the core decision; compare and save closes the loop." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">The flow</span>
+<h2 style="margin:0;font:800 72px/1.05 Archivo;letter-spacing:-.02em">Ten screens in four stages</h2>
+</div>
+<div style="display:grid;grid-template-columns:4fr 2fr 1fr 3fr;gap:20px;border-top:3px solid #201e1d;padding-top:24px">
+<div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 32px Archivo">Set up</span><span style="font:400 26px Archivo;color:#5e5a58">01–04</span></div><div style="display:flex;gap:20px"><img src="assets/screens/01-account.png" alt="Create account" style="height:320px;display:block"><img src="assets/screens/02-vehicle.png" alt="Choose vehicle" style="height:320px;display:block"><img src="assets/screens/03-mileage.png" alt="Mileage" style="height:320px;display:block"><img src="assets/screens/04-garage.png" alt="Garage" style="height:320px;display:block"></div></div>
+<div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 32px Archivo">Capture</span><span style="font:400 26px Archivo;color:#5e5a58">05–06</span></div><div style="display:flex;gap:20px"><img src="assets/screens/05-capture.png" alt="Capture quote" style="height:320px;display:block"><img src="assets/screens/06-confirm.png" alt="Confirm quote" style="height:320px;display:block"></div></div>
+<div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 32px Archivo">Decide</span><span style="font:400 26px Archivo;color:#5e5a58">07</span></div><img src="assets/screens/07-quote.png" alt="Quote check" style="height:320px;display:block;align-self:flex-start"></div>
+<div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;flex-direction:column;gap:4px"><span style="font:800 32px Archivo">Compare &amp; save</span><span style="font:400 26px Archivo;color:#5e5a58">08–10</span></div><div style="display:flex;gap:20px"><img src="assets/screens/08-shops.png" alt="Nearby shops" style="height:320px;display:block"><img src="assets/screens/09-pricing.png" alt="Shop pricing" style="height:320px;display:block"><img src="assets/screens/10-savings.png" alt="Savings" style="height:320px;display:block"></div></div>
+</div>
+</section>
+
+<section data-label="Setup" data-speaker-notes="Setup is three steps. The vehicle must be exact because schedules vary by engine and trim. Driving conditions decide normal versus severe schedules. Past invoices prevent flagging work that's already done." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:64px;align-items:start">
+<div style="display:flex;gap:24px"><img src="assets/screens/01-account.png" alt="Create account" style="height:820px;display:block"><img src="assets/screens/02-vehicle.png" alt="Choose vehicle" style="height:820px;display:block"><img src="assets/screens/03-mileage.png" alt="Mileage and history" style="height:820px;display:block"></div>
+<div style="display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">01–03 · Set up</span><h2 style="margin:0;font:800 56px/1.05 Archivo;letter-spacing:-.02em">Setup captures the car, mileage and driving</h2></div>
+<div style="display:flex;flex-direction:column;border-top:3px solid #201e1d">
+<div style="padding:22px 0;border-bottom:2px solid #c9c6c5;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Account first</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Cars and history are saved from the first visit</span></div>
+<div style="padding:22px 0;border-bottom:2px solid #c9c6c5;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Exact vehicle</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">VIN scan, plate lookup or year–make–model–trim</span></div>
+<div style="padding:22px 0;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Conditions + history</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Selects normal or severe schedule; old invoices prevent repeat flags</span></div>
+</div>
+</div>
+</section>
+
+<section data-label="Garage" data-speaker-notes="The garage is the home screen and where the data loop shows up for the user. Within-user: each quote adds history and sharpens predictions. Across-user: owners like you shows how similar cars were serviced and priced." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:96px;align-items:start">
+<img src="assets/screens/04-garage.png" alt="Garage" style="height:860px;display:block">
+<div style="display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">04 · Garage</span><h2 style="margin:0;font:800 64px/1.05 Archivo;letter-spacing:-.02em;max-width:1100px">The garage makes every quote part of the data loop</h2></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-top:3px solid #201e1d">
+<div style="padding:32px 40px 0 0;display:flex;flex-direction:column;gap:16px"><span style="font:800 36px Archivo">Within-user loop</span><p style="margin:0;font:400 30px/1.4 Archivo;color:#3d3a39;text-wrap:pretty">Each checked quote adds to the car's record, so the next verdict is more confident.</p></div>
+<div style="padding:32px 0 0 40px;border-left:3px solid #201e1d;display:flex;flex-direction:column;gap:16px"><span style="font:800 36px Archivo">Across-user loop</span><p style="margin:0;font:400 30px/1.4 Archivo;color:#3d3a39;text-wrap:pretty">"Owners like you" compares spend, upsells seen and decisions for the same model and mileage band.</p></div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;border-top:3px solid #201e1d;padding-top:28px"><span style="font:800 120px/1 Archivo;letter-spacing:-.03em;color:#ec3013">1,284</span><span style="font:400 32px/1.35 Archivo;max-width:520px">Accord owners at 60–70k mi in the sample comparison</span></div>
+</div>
+</section>
+
+<section data-label="Capture" data-speaker-notes="Three ways in: camera, upload, or typing a verbal quote. Extraction must not silently drop a line item, so low-confidence fields are flagged and the user confirms before anything is evaluated. Every line is editable." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:80px;align-items:start">
+<div style="display:flex;gap:28px"><img src="assets/screens/05-capture.png" alt="Capture quote" style="height:860px;display:block"><img src="assets/screens/06-confirm.png" alt="Confirm or edit quote" style="height:860px;display:block"></div>
+<div style="display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">05–06 · Capture</span><h2 style="margin:0;font:800 64px/1.05 Archivo;letter-spacing:-.02em">Quotes come in by photo, upload or typing</h2></div>
+<div style="display:flex;flex-direction:column;border-top:3px solid #201e1d">
+<div style="padding:22px 0;border-bottom:2px solid #c9c6c5;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Three inputs</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Camera, photo or PDF upload, or manual entry</span></div>
+<div style="padding:22px 0;border-bottom:2px solid #c9c6c5;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Flag, don't guess</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Low-confidence fields and total mismatches are shown for confirmation</span></div>
+<div style="padding:22px 0;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Verbal quotes</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Add, edit or remove line items; unpriced items still get checked</span></div>
+</div>
+</div>
+</section>
+
+<section data-label="Verdict" data-speaker-notes="The core decision screen. Each item gets one of four labels with a reason and a source. Wear items like brakes are never given a verdict without an inspection, only a question to ask. Savings update as the user approves or declines." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:96px;align-items:start">
+<img src="assets/screens/07-quote.png" alt="Quote check" style="height:860px;display:block">
+<div style="display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">07 · Decide</span><h2 style="margin:0;font:800 64px/1.05 Archivo;letter-spacing:-.02em">Each line item gets a verdict and a source</h2></div>
+<div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:22px 32px;align-items:center;border-top:3px solid #201e1d;padding-top:32px">
+<span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;background:#201e1d;color:#f3f2f2;border:3px solid #201e1d">Needed now</span><span style="font:400 30px Archivo">On or past the manufacturer schedule</span>
+<span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;background:#eae9e9;color:#201e1d;border:3px solid #201e1d">Due soon</span><span style="font:400 30px Archivo">Within the next interval; fine if priced fairly</span>
+<span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;background:#f3f2f2;color:#a8200b;border:3px solid #ec3013">Ask the shop</span><span style="font:400 30px Archivo">Wear item; needs a measurement to judge</span>
+<span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;background:#ec3013;color:#ffffff;border:3px solid #ec3013">Not due</span><span style="font:400 30px Archivo">Off schedule or already done</span>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;border-top:3px solid #201e1d;padding-top:28px"><span style="font:800 120px/1 Archivo;letter-spacing:-.03em;color:#ec3013">$487</span><span style="font:400 32px/1.35 Archivo;max-width:520px">declined from a $965 dealer quote in the sample</span></div>
+</div>
+</section>
+
+<section data-label="Shops" data-speaker-notes="Price transparency. Estimates are built from other owners' invoices for the approved work only. Report counts and ranges communicate confidence. Upsell rate is the share of a shop's quotes containing not-due items." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:80px;align-items:start">
+<div style="display:flex;gap:28px"><img src="assets/screens/08-shops.png" alt="Nearby shops" style="height:860px;display:block"><img src="assets/screens/09-pricing.png" alt="Shop pricing" style="height:860px;display:block"></div>
+<div style="display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">08–09 · Compare</span><h2 style="margin:0;font:800 64px/1.05 Archivo;letter-spacing:-.02em">Nearby shops are priced from owners' invoices</h2></div>
+<div style="display:flex;flex-direction:column;border-top:3px solid #201e1d">
+<div style="padding:22px 0;border-bottom:2px solid #c9c6c5;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Radius filter</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">5, 10, 25 or 50 miles from the user</span></div>
+<div style="padding:22px 0;border-bottom:2px solid #c9c6c5;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Estimate for approved work</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Range and report count show how much to trust it</span></div>
+<div style="padding:22px 0;display:flex;flex-direction:column;gap:8px"><span style="font:800 32px Archivo">Per-service range</span><span style="font:400 28px/1.35 Archivo;color:#3d3a39">Each shop's price and the user's quote against the area spread</span></div>
+</div>
+</div>
+</section>
+
+<section data-label="Savings" data-speaker-notes="Lifetime savings give a reason to come back and keep the record current. Today's visit updates live from the verdict screen. Kept-on-schedule matters as much as money saved; we don't want users skipping needed work." style="background:#f3f2f2;color:#201e1d;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:96px;align-items:start">
+<img src="assets/screens/10-savings.png" alt="Lifetime savings" style="height:860px;display:block">
+<div style="display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">10 · Save</span><h2 style="margin:0;font:800 64px/1.05 Archivo;letter-spacing:-.02em">Savings add up across visits</h2></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-top:3px solid #201e1d">
+<div style="padding:32px 40px 0 0;display:flex;flex-direction:column;gap:12px"><span style="font:800 120px/1 Archivo;letter-spacing:-.03em;color:#ec3013">$1,284</span><span style="font:400 30px/1.35 Archivo">saved across four visits in the sample</span></div>
+<div style="padding:32px 0 0 40px;border-left:3px solid #201e1d;display:flex;flex-direction:column;gap:12px"><span style="font:800 120px/1 Archivo;letter-spacing:-.03em">4 / 4</span><span style="font:400 30px/1.35 Archivo">visits kept the car on its manufacturer schedule</span></div>
+</div>
+<p style="margin:0;font:400 30px/1.4 Archivo;color:#3d3a39;max-width:1000px;text-wrap:pretty">Each visit shows paid vs. quoted, so the value of every check stays visible.</p>
+</div>
+</section>
+
+<section data-label="Open questions" data-speaker-notes="What we want to learn in the first round of user testing." style="background:#201e1d;color:#f3f2f2;font-family:Archivo,sans-serif;padding:100px 100px 80px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:20px"><span style="font:600 26px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#ec3013">Next</span><h2 style="margin:0;font:800 72px/1.05 Archivo;letter-spacing:-.02em">Open questions for user testing</h2></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-top:3px solid #f3f2f2">
+<div style="padding:32px 48px 32px 0;border-bottom:2px solid #4a4746;display:flex;gap:28px"><span style="font:800 40px Archivo;color:#ec3013">1</span><span style="font:400 34px/1.35 Archivo;text-wrap:pretty">Will owners create an account before their first quote check?</span></div>
+<div style="padding:32px 0 32px 48px;border-left:3px solid #f3f2f2;border-bottom:2px solid #4a4746;display:flex;gap:28px"><span style="font:800 40px Archivo;color:#ec3013">2</span><span style="font:400 34px/1.35 Archivo;text-wrap:pretty">Is a report count enough to make price estimates feel trustworthy?</span></div>
+<div style="padding:32px 48px 0 0;display:flex;gap:28px"><span style="font:800 40px Archivo;color:#ec3013">3</span><span style="font:400 34px/1.35 Archivo;text-wrap:pretty">Do "Ask the shop" prompts help at the counter, or add friction?</span></div>
+<div style="padding:32px 0 0 48px;border-left:3px solid #f3f2f2;display:flex;gap:28px"><span style="font:800 40px Archivo;color:#ec3013">4</span><span style="font:400 34px/1.35 Archivo;text-wrap:pretty">How will shops react to a public upsell rate?</span></div>
+</div>
+</section>
+
+</x-import>
+</x-dc>
+</body>
+</html>

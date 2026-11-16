@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"><style>body{margin:0;background:#dcdada;font-family:Archivo,sans-serif;color:#201e1d}a{color:#a8200b}a:hover{color:#ec3013}button{font-family:inherit;cursor:pointer}*{box-sizing:border-box}</style></helmet>
+<section id="t1" style="padding:48px 56px 56px;display:flex;flex-direction:column;gap:32px">
+<div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:0;border-top:2px solid #201e1d;max-width:1760px">
+<div style="padding:16px 24px 0 0;display:flex;flex-direction:column;gap:8px">
+<div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">ShopSense · Mockup v1</div>
+<div style="font:800 40px/1.02 Archivo;letter-spacing:-.02em">At the counter, with a second opinion.</div>
+</div>
+<div style="padding:16px 24px 0;border-left:2px solid #201e1d;font:400 15px/1.5 Archivo;text-wrap:pretty">Scenario: 2017 Accord, 68,420 mi, a $965 dealer quote. Screens 01–10 are one connected flow — sign up and add a car (01–04), snap, upload or type a quote (05–06), and approve/decline on 07 updates savings, shop estimates and history live.</div>
+<div style="padding:16px 0 0 24px;border-left:2px solid #201e1d;font:400 15px/1.5 Archivo;text-wrap:pretty">Assumptions: estimates come from user-uploaded invoices (report count shown for trust); "upsell rate" = share of a shop's quotes containing not-due items. Mobile-first, since the decision happens standing at the service desk.</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
+
+<div id="1g" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1g" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">01</a><span style="font:600 14px Archivo">Create account</span></div>
+<div data-screen-label="01 Create account" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+
+<div style="padding:24px 20px 18px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:10px">
+<div style="font:800 15px Archivo;letter-spacing:.02em;color:#ec3013">SHOPSENSE</div>
+<div style="font:800 34px/1.02 Archivo;letter-spacing:-.02em;text-wrap:pretty">A second opinion before you say yes.</div>
+<div style="font:400 14px/1.45 Archivo;color:#3d3a39;text-wrap:pretty">An account keeps your cars and service history in one place — so every check gets more specific to you.</div>
+</div>
+<div style="flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Name</span><input type="text" value="{{ acctName }}" onChange="{{ onAcctName }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Email</span><input type="text" placeholder="you@email.com" type="email" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Password</span><input type="text" placeholder="8+ characters" type="password" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:4px">
+<button style="text-align:left;padding:12px;font:600 14px Archivo;background:transparent;border:2px solid #201e1d;color:#201e1d">Continue with Apple</button>
+<button style="text-align:left;padding:12px;font:600 14px Archivo;background:transparent;border:2px solid #201e1d;border-left:0;color:#201e1d">Continue with Google</button>
+</div>
+<div style="display:flex;flex-direction:column;border-top:2px solid #201e1d;margin-top:6px">
+<div style="padding:10px 0;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">Track every car</span><span style="font:400 12.5px Archivo;color:#5e5a58">Mileage, history and what's due next.</span></div><div style="padding:10px 0;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">Build your record</span><span style="font:400 12.5px Archivo;color:#5e5a58">Each quote you check is saved to the car.</span></div><div style="padding:10px 0;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">Compare with owners like you</span><span style="font:400 12.5px Archivo;color:#5e5a58">See what similar cars needed and paid.</span></div>
+</div>
+</div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Create account →</button><div style="font:400 11px/1.4 Archivo;color:#5e5a58">Already have one? <a href="#1g">Sign in</a>. We never sell your data to shops.</div></div>
+</div>
+</div>
+<div id="1h" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1h" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">02</a><span style="font:600 14px Archivo">Choose your vehicle</span></div>
+<div data-screen-label="02 Choose vehicle" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+
+<div style="padding:4px 20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:4px"><div style="height:4px;background:#ec3013"></div><div style="height:4px;background:#d6d3d2"></div><div style="height:4px;background:#d6d3d2"></div></div>
+<div style="padding:8px 20px 0;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Step 1 of 3</div>
+<div style="padding:6px 20px 16px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px">
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Add your car</div>
+<div style="font:400 13px/1.4 Archivo;color:#5e5a58">Maintenance schedules differ by engine and trim, so be exact.</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #201e1d">
+<button style="text-align:left;padding:14px 20px;font:600 14px Archivo;background:#201e1d;color:#f3f2f2;border:0;display:flex;flex-direction:column;gap:2px">Scan VIN<span style="font:400 11px 'JetBrains Mono',monospace;color:#c9c6c5">door jamb · windshield</span></button>
+<button style="text-align:left;padding:14px 20px;font:600 14px Archivo;background:transparent;color:#201e1d;border:0;border-left:2px solid #201e1d;display:flex;flex-direction:column;gap:2px">Plate lookup<span style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">plate + state</span></button>
+</div>
+<div style="padding:12px 20px 0;font:400 12px Archivo;color:#5e5a58">Or pick it:</div>
+<div style="flex:1;overflow-y:auto;padding:10px 20px 18px;display:grid;grid-template-columns:1fr 1fr;gap:14px 12px;align-content:start">
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Year</span><select value="{{ car.year }}" onChange="{{ car.onYear }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%;appearance:auto"><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option><option value="2018">2018</option><option value="2017">2017</option><option value="2016">2016</option><option value="2015">2015</option></select></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Make</span><select value="{{ car.make }}" onChange="{{ car.onMake }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%;appearance:auto"><option value="Honda">Honda</option><option value="Toyota">Toyota</option><option value="Ford">Ford</option><option value="Subaru">Subaru</option><option value="Chevrolet">Chevrolet</option><option value="Hyundai">Hyundai</option></select></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Model</span><select value="{{ car.model }}" onChange="{{ car.onModel }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%;appearance:auto"><option value="Accord">Accord</option><option value="Civic">Civic</option><option value="CR-V">CR-V</option><option value="Pilot">Pilot</option><option value="HR-V">HR-V</option></select></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Trim</span><select value="{{ car.trim }}" onChange="{{ car.onTrim }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%;appearance:auto"><option value="LX">LX</option><option value="Sport">Sport</option><option value="EX">EX</option><option value="EX-L">EX-L</option><option value="Touring">Touring</option></select></label>
+<label style="display:flex;flex-direction:column;gap:6px;grid-column:1 / -1"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Engine</span><select value="{{ car.engine }}" onChange="{{ car.onEngine }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%;appearance:auto"><option value="1.5L Turbo I4">1.5L Turbo I4</option><option value="2.0L Turbo I4">2.0L Turbo I4</option><option value="2.4L I4">2.4L I4</option><option value="3.5L V6">3.5L V6</option></select></label>
+<div style="grid-column:1 / -1;padding:14px;background:#eae9e9;display:flex;flex-direction:column;gap:4px">
+<span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#a8200b">Matched</span>
+<span style="font:800 18px Archivo">{{ carFull }}</span>
+<span style="font:400 12px Archivo;color:#3d3a39">Manufacturer schedule loaded · 2 open recalls checked</span>
+</div>
+</div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Next: mileage →</button></div>
+</div>
+</div>
+<div id="1i" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1i" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">03</a><span style="font:600 14px Archivo">Mileage & history</span></div>
+<div data-screen-label="03 Mileage" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+
+<div style="padding:4px 20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:4px"><div style="height:4px;background:#ec3013"></div><div style="height:4px;background:#ec3013"></div><div style="height:4px;background:#d6d3d2"></div></div>
+<div style="padding:8px 20px 0;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Step 2 of 3</div>
+<div style="padding:6px 20px 16px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px">
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Where's it at?</div>
+<div style="font:400 13px/1.4 Archivo;color:#5e5a58">{{ carShort }}</div>
+</div>
+<div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+<div style="padding:16px 20px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:6px">
+<span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Odometer</span>
+<div style="display:flex;align-items:baseline;gap:8px;border-bottom:2px solid #201e1d"><input type="text" inputMode="numeric" value="{{ milesStr }}" onChange="{{ onMiles }}" style="font:800 44px/1.1 Archivo;letter-spacing:-.02em;border:0;background:transparent;color:#201e1d;width:100%;min-width:0;padding:4px 0;outline:none"><span style="font:600 15px Archivo;color:#5e5a58">mi</span></div>
+</div>
+<div style="padding:16px 20px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">How do you drive?</span>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ drives }}" as="d" hint-placeholder-count="3">
+<button onClick="{{ d.pick }}" style="text-align:left;padding:11px 12px;font:600 14px Archivo;border:2px solid #201e1d;margin-top:-2px;background:{{ d.bg }};color:{{ d.fg }};display:flex;flex-direction:column;gap:2px">{{ d.label }}<span style="font:400 12px Archivo;opacity:.8">{{ d.sub }}</span></button>
+</sc-for>
+</div>
+</div>
+<div style="padding:16px 20px;display:flex;flex-direction:column;gap:8px">
+<span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Past service · optional</span>
+<div style="font:400 13px/1.4 Archivo;color:#3d3a39;text-wrap:pretty">Old invoices tell us what's already been done, so we don't flag it twice.</div>
+<label style="text-align:left;padding:12px;font:600 14px Archivo;border:2px dashed #201e1d;cursor:pointer;display:flex;justify-content:space-between">Upload past invoices<span style="font:400 12px 'JetBrains Mono',monospace;color:#5e5a58">{{ historyLabel }}</span><input type="file" multiple accept="image/*,application/pdf" onChange="{{ onHistory }}" style="display:none"></label>
+</div>
+</div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Finish setup →</button><div style="font:400 11px Archivo;color:#5e5a58">Skip history for now — you can add it anytime.</div></div>
+</div>
+</div>
+<div id="1j" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1j" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">04</a><span style="font:600 14px Archivo">Garage + owners like you</span></div>
+<div data-screen-label="04 Garage" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+
+<div style="padding:8px 20px 14px;border-bottom:2px solid #201e1d;display:flex;justify-content:space-between;align-items:flex-end">
+<div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">{{ greeting }}</span><span style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Your garage</span></div>
+<span style="font:600 13px Archivo;color:#a8200b">+ Add car</span>
+</div>
+<div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+<div style="padding:16px 20px;background:#201e1d;color:#f3f2f2;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:800 20px Archivo">{{ carShort }}</span><span style="font:400 12px 'JetBrains Mono',monospace;color:#c9c6c5">{{ milesStr }} mi</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #4a4746">
+<div style="padding:10px 0;display:flex;flex-direction:column;gap:2px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#c9c6c5;text-transform:uppercase">Due now</span><span style="font:600 14px Archivo">Oil & filter · Rotation</span></div>
+<div style="padding:10px 0 10px 12px;border-left:1px solid #4a4746;display:flex;flex-direction:column;gap:2px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#c9c6c5;text-transform:uppercase">Next up</span><span style="font:600 14px Archivo">Air filter · 75,000</span></div>
+</div>
+<a href="#1e" style="text-align:left;padding:13px 14px;font:600 15px Archivo;background:#ec3013;color:#fff;text-decoration:none">At the shop? Check a quote →</a>
+</div>
+<div style="padding:12px 20px;border-bottom:2px solid #201e1d;display:flex;justify-content:space-between;align-items:baseline"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">2020 Toyota RAV4 LE</span><span style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">31,050 mi · nothing due</span></div><span style="font:600 12px Archivo;color:#5e5a58">→</span></div>
+<div style="padding:16px 20px 6px;display:flex;flex-direction:column;gap:4px">
+<span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#a8200b">Owners like you</span>
+<span style="font:400 13px/1.4 Archivo;color:#3d3a39">{{ peerCount }} {{ peerDesc }}</span>
+</div>
+<sc-for list="{{ peers }}" as="p" hint-placeholder-count="3">
+<div style="padding:10px 20px;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;gap:12px"><span style="font:600 13.5px Archivo">{{ p.label }}</span><span style="font:600 13px 'JetBrains Mono',monospace">{{ p.you }}</span></div>
+<div style="position:relative;height:10px;background:#e2e0e0">
+<div style="position:absolute;left:0;top:0;bottom:0;width:{{ p.peerPct }}%;background:#b5b1b0"></div>
+<div style="position:absolute;left:{{ p.youPct }}%;top:-3px;width:3px;height:16px;margin-left:-1px;background:#ec3013"></div>
+</div>
+<div style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">{{ p.note }}</div>
+</div>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #201e1d;font:600 11px Archivo"><div style="padding:12px 0 22px 14px">Quote</div><div style="padding:12px 0 22px 14px">Shops</div><div style="padding:12px 0 22px 14px">Savings</div><div style="padding:12px 0 22px 14px;color:#ec3013;border-top:3px solid #ec3013;margin-top:-2px">Garage</div></div>
+</div>
+</div>
+<div id="1e" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1e" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">05</a><span style="font:600 14px Archivo">Snap or upload quote</span></div>
+<div data-screen-label="05 Capture quote" style="width:390px;height:844px;background:#201e1d;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden;color:#f3f2f2">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:8px 20px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#ec3013">New check · {{ carShort }}</div>
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Scan your quote</div>
+<div style="font:400 13px/1.4 Archivo;color:#c9c6c5">Fit the whole page in the frame — every line item and the total.</div>
+</div>
+<div style="flex:1;position:relative;margin:0 20px;background:repeating-linear-gradient(135deg,#2c2a29 0 10px,#343130 10px 20px);display:flex;align-items:center;justify-content:center;overflow:hidden">
+<sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Uploaded quote" style="position:absolute;inset:0;background-color:#111;background-image:{{ photoBg }};background-size:contain;background-position:center;background-repeat:no-repeat"></div></sc-if>
+<sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ true }}"><div style="font:400 11px 'JetBrains Mono',monospace;color:#9a9694;text-align:left;padding:0 40px">camera viewfinder · quote on counter</div></sc-if>
+<div style="position:absolute;left:18px;top:18px;width:28px;height:28px;border-left:3px solid #ec3013;border-top:3px solid #ec3013"></div>
+<div style="position:absolute;right:18px;top:18px;width:28px;height:28px;border-right:3px solid #ec3013;border-top:3px solid #ec3013"></div>
+<div style="position:absolute;left:18px;bottom:18px;width:28px;height:28px;border-left:3px solid #ec3013;border-bottom:3px solid #ec3013"></div>
+<div style="position:absolute;right:18px;bottom:18px;width:28px;height:28px;border-right:3px solid #ec3013;border-bottom:3px solid #ec3013"></div>
+<div style="position:absolute;left:0;right:0;bottom:-2px;padding:8px 12px;background:#201e1d;font:400 11px 'JetBrains Mono',monospace;color:#f3f2f2;display:flex;justify-content:space-between"><span>{{ captureStatus }}</span><span>{{ captureHint }}</span></div>
+</div>
+<div style="padding:20px 20px 8px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px">
+<label style="display:flex;flex-direction:column;gap:2px;font:600 13px Archivo;cursor:pointer;padding:10px 0">Upload<span style="font:400 11px 'JetBrains Mono',monospace;color:#9a9694">photo · PDF</span><input type="file" accept="image/*,application/pdf" onChange="{{ onFile }}" style="display:none"></label>
+<label style="width:76px;height:76px;border-radius:50%;border:4px solid #f3f2f2;display:flex;align-items:center;justify-content:center;cursor:pointer"><span style="width:58px;height:58px;border-radius:50%;background:#ec3013"></span><input type="file" accept="image/*" capture="environment" onChange="{{ onFile }}" style="display:none"></label>
+<div onClick="{{ goVerbal }}" style="display:flex;flex-direction:column;gap:2px;font:600 13px Archivo;align-items:flex-end;padding:10px 0;cursor:pointer">Type it<span style="font:400 11px 'JetBrains Mono',monospace;color:#9a9694">manual entry</span></div>
+</div>
+<div style="padding:4px 20px 26px;font:400 11px/1.4 Archivo;color:#9a9694">Multi-page quote? Add pages after the first shot. Photos stay private to your account.</div>
+</div>
+</div>
+
+<div id="1f" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1f" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">06</a><span style="font:600 14px Archivo">Confirm or edit the quote</span></div>
+<div data-screen-label="06 Confirm extraction" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:8px 20px 14px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px">
+<div style="font:600 12px Archivo;color:#a8200b">← Retake</div>
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">{{ confirmTitle }}</div>
+<div style="font:400 13px/1.4 Archivo;color:#5e5a58">{{ confirmSub }}</div>
+</div>
+<div style="display:flex;border-bottom:2px solid #201e1d">
+<sc-for list="{{ sources }}" as="src" hint-placeholder-count="2">
+<button onClick="{{ src.pick }}" style="flex:1;text-align:left;padding:10px 12px;font:600 13px Archivo;border:0;border-right:2px solid #201e1d;background:{{ src.bg }};color:{{ src.fg }}">{{ src.label }}</button>
+</sc-for>
+</div>
+<div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+<sc-if value="{{ isPhoto }}" hint-placeholder-val="{{ true }}"><div style="display:grid;grid-template-columns:96px minmax(0,1fr);border-bottom:2px solid #201e1d">
+<div style="height:124px;position:relative;background:repeating-linear-gradient(135deg,#eae9e9 0 8px,#e2e0e0 8px 16px);border-right:2px solid #201e1d;overflow:hidden">
+<sc-if value="{{ hasPhoto }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="Quote thumbnail" style="position:absolute;inset:0;background-image:{{ photoBg }};background-size:cover;background-position:center"></div></sc-if>
+<sc-if value="{{ noPhoto }}" hint-placeholder-val="{{ true }}"><div style="padding:8px;font:400 10px 'JetBrains Mono',monospace;color:#5e5a58">quote photo</div></sc-if>
+</div>
+<div style="padding:12px 16px;display:flex;flex-direction:column;gap:6px;justify-content:center">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Found</div>
+<div style="font:800 22px/1 Archivo">{{ lineCount }} line items</div>
+<div style="font:400 12px/1.4 Archivo;color:#3d3a39">{{ totalCheck }}</div>
+</div>
+</div>
+<sc-for list="{{ fields }}" as="f" hint-placeholder-count="4">
+<div style="padding:12px 20px;border-bottom:1px solid #c9c6c5;display:flex;justify-content:space-between;align-items:center;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58;text-transform:uppercase;letter-spacing:.06em">{{ f.label }}</span><span style="font:600 15px Archivo">{{ f.value }}</span></div>
+<span style="font:600 11px 'JetBrains Mono',monospace;color:#5e5a58">✓ read</span>
+</div>
+</sc-for></sc-if>
+<sc-if value="{{ isVerbal }}" hint-placeholder-val="{{ false }}"><div style="padding:14px 20px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:6px;background:#eae9e9">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#a8200b">Verbal quote</div>
+<div style="font:400 13px/1.45 Archivo;color:#201e1d;text-wrap:pretty">Add each item the advisor mentioned. No price yet? Leave it at $0 — we'll still check whether it's due, and fill in an area estimate.</div>
+</div></sc-if>
+<div style="padding:14px 20px;background:#fbe4df;border-bottom:2px solid #ec3013;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:400 11px 'JetBrains Mono',monospace;color:#a8200b;text-transform:uppercase;letter-spacing:.06em">Odometer · low confidence</span><span style="font:600 11px 'JetBrains Mono',monospace;color:#a8200b">CHECK</span></div>
+<input type="text" value="{{ milesStr }}" onChange="{{ onMiles }}" style="font:800 22px Archivo;padding:10px 12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%">
+<div style="font:400 12px/1.4 Archivo;color:#3d3a39">{{ odoNote }}</div>
+</div>
+<div style="padding:14px 20px 8px;display:flex;justify-content:space-between;align-items:baseline"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Line items</span><span style="font:800 15px Archivo">${{ quoteTotal }}</span></div>
+<sc-for list="{{ lines }}" as="ln" hint-placeholder-count="5">
+<div style="padding:6px 20px;display:grid;grid-template-columns:minmax(0,1fr) 84px 36px;gap:0">
+<input type="text" value="{{ ln.name }}" onChange="{{ ln.onName }}" placeholder="Service name" style="font:600 14px Archivo;padding:9px 10px;border:2px solid #201e1d;border-right:0;background:#fff;color:#201e1d;border-radius:0;min-width:0">
+<div style="display:flex;align-items:center;border:2px solid #201e1d;background:#fff;padding-left:8px;font:600 14px Archivo">$<input type="text" inputMode="decimal" value="{{ ln.priceStr }}" onChange="{{ ln.onPrice }}" style="font:600 14px Archivo;padding:9px 6px 9px 2px;border:0;background:transparent;color:#201e1d;width:100%;min-width:0;outline:none"></div>
+<button onClick="{{ ln.remove }}" aria-label="Remove item" style="border:2px solid #201e1d;border-left:0;background:transparent;font:600 16px Archivo;color:#a8200b;padding:0">×</button>
+</div>
+</sc-for>
+<div style="padding:8px 20px 20px">
+<button onClick="{{ addLine }}" style="width:100%;text-align:left;padding:11px 12px;font:600 14px Archivo;background:transparent;color:#201e1d;border:2px dashed #201e1d">+ Add line item</button>
+</div>
+</div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d">
+<button style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Looks right — check my quote →</button>
+</div>
+</div>
+</div>
+
+<div id="1a" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1a" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">07</a><span style="font:600 14px Archivo">Quote check + savings</span></div>
+<div data-screen-label="07 Quote check" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:8px 20px 14px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Westgate Honda · Quote #4471</div>
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">{{ carShort }}</div>
+<div style="font:400 13px Archivo;color:#5e5a58">{{ milesStr }} mi · {{ driveLabel }} driving · 3 prior visits</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #201e1d">
+<div style="padding:14px 20px;background:#ec3013;color:#fff;display:flex;flex-direction:column;gap:2px">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase">You save</div>
+<div style="font:800 34px/1 Archivo;letter-spacing:-.02em">{{ savedLabel }}</div>
+<div style="font:400 12px Archivo">{{ savedSub }}</div>
+</div>
+<div style="padding:14px 20px;display:flex;flex-direction:column;gap:2px;border-left:2px solid #201e1d">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Approving</div>
+<div style="font:800 34px/1 Archivo;letter-spacing:-.02em">${{ approvedTotal }}</div>
+<div style="font:400 12px Archivo;color:#5e5a58">of ${{ quoteTotal }} quoted</div>
+</div>
+</div>
+<div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
+<sc-for list="{{ items }}" as="it" hint-placeholder-count="5">
+<div style="padding:12px 20px;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:6px;opacity:{{ it.rowOpacity }}">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+<div style="display:flex;flex-direction:column;gap:5px;min-width:0">
+<span style="align-self:flex-start;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;background:{{ it.tagBg }};color:{{ it.tagFg }};border:1.5px solid {{ it.tagBorder }}">{{ it.label }}</span>
+<span style="font:600 15px/1.2 Archivo">{{ it.name }}</span>
+</div>
+<span style="font:600 15px Archivo;text-decoration:{{ it.strike }}">${{ it.price }}</span>
+</div>
+<div style="font:400 12.5px/1.4 Archivo;color:#3d3a39;text-wrap:pretty">{{ it.note }} <span style="font:400 11px 'JetBrains Mono',monospace;color:#7a7674">— {{ it.src }}</span></div>
+<div style="display:flex;gap:0">
+<button onClick="{{ it.approve }}" style="flex:1;text-align:left;padding:7px 10px;font:600 12px Archivo;border:2px solid #201e1d;background:{{ it.aBg }};color:{{ it.aFg }}">Approve</button>
+<button onClick="{{ it.decline }}" style="flex:1;text-align:left;padding:7px 10px;font:600 12px Archivo;border:2px solid #201e1d;border-left:0;background:{{ it.dBg }};color:{{ it.dFg }}">Decline</button>
+</div>
+</div>
+</sc-for>
+<div style="padding:14px 20px;display:flex;flex-direction:column;gap:4px;background:#eae9e9">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#a8200b">Cheaper nearby</div>
+<div style="font:400 13px/1.4 Archivo">Approved work averages <b>${{ cheapest.est }}</b> at {{ cheapest.name }}, {{ cheapest.dist }} mi away — another ${{ cheapest.diff }} off.</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #201e1d;font:600 11px Archivo">
+<div style="padding:12px 0 22px 14px;color:#ec3013;border-top:3px solid #ec3013;margin-top:-2px">Quote</div><div style="padding:12px 0 22px 14px">Shops</div><div style="padding:12px 0 22px 14px">Savings</div><div style="padding:12px 0 22px 14px">Garage</div>
+</div>
+</div>
+</div>
+
+<div id="1b" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1b" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">08</a><span style="font:600 14px Archivo">Shops within radius</span></div>
+<div data-screen-label="08 Nearby shops" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:8px 20px 14px;display:flex;flex-direction:column;gap:4px">
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Same work, nearby</div>
+<div style="font:400 13px Archivo;color:#5e5a58">Estimated for your {{ approvedCount }} approved items · from owner invoices</div>
+</div>
+<div style="display:flex;border-top:2px solid #201e1d;border-bottom:2px solid #201e1d">
+<sc-for list="{{ radii }}" as="r" hint-placeholder-count="4">
+<button onClick="{{ r.pick }}" style="flex:1;text-align:left;padding:10px 12px;font:600 13px Archivo;border:0;border-right:2px solid #201e1d;background:{{ r.bg }};color:{{ r.fg }}">{{ r.label }}</button>
+</sc-for>
+</div>
+<div style="height:150px;flex:none;position:relative;background:repeating-linear-gradient(135deg,#eae9e9 0 10px,#e2e0e0 10px 20px);border-bottom:2px solid #201e1d">
+<div style="position:absolute;left:12px;top:10px;font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">map · {{ shopCount }} shops within {{ radius }} mi</div>
+<div style="position:absolute;left:50%;top:55%;width:{{ ringSize }}px;height:{{ ringSize }}px;transform:translate(-50%,-50%);border:2px dashed #ec3013;border-radius:50%"></div>
+<div style="position:absolute;left:50%;top:55%;width:12px;height:12px;transform:translate(-50%,-50%);background:#201e1d;border-radius:50%"></div>
+</div>
+<div style="flex:1;overflow-y:auto">
+<sc-for list="{{ shops }}" as="s" hint-placeholder-count="4">
+<div onClick="{{ s.select }}" style="padding:12px 20px;border-bottom:1px solid #c9c6c5;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;cursor:pointer;background:{{ s.rowBg }}">
+<div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><span style="font:600 15px Archivo">{{ s.name }}</span><sc-if value="{{ s.isBest }}" hint-placeholder-val="{{ false }}"><span style="font:600 10px 'JetBrains Mono',monospace;padding:2px 5px;background:#ec3013;color:#fff">LOWEST</span></sc-if><sc-if value="{{ s.isHere }}" hint-placeholder-val="{{ false }}"><span style="font:600 10px 'JetBrains Mono',monospace;padding:2px 5px;border:1.5px solid #201e1d">YOU'RE HERE</span></sc-if></div>
+<div style="font:400 12px 'JetBrains Mono',monospace;color:#5e5a58">{{ s.dist }} mi · ★ {{ s.rating }} · {{ s.reports }} reports</div>
+<sc-if value="{{ showUpsell }}" hint-placeholder-val="{{ true }}"><div style="font:400 12px Archivo;color:{{ s.upsellColor }}">Upsell rate {{ s.upsell }}%</div></sc-if>
+</div>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:2px">
+<span style="font:800 20px/1 Archivo">${{ s.est }}</span>
+<span style="font:400 11px Archivo;color:#5e5a58">±${{ s.spread }}</span>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #201e1d;font:600 11px Archivo">
+<div style="padding:12px 0 22px 14px">Quote</div><div style="padding:12px 0 22px 14px;color:#ec3013;border-top:3px solid #ec3013;margin-top:-2px">Shops</div><div style="padding:12px 0 22px 14px">Savings</div><div style="padding:12px 0 22px 14px">Garage</div>
+</div>
+</div>
+</div>
+
+<div id="1c" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1c" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">09</a><span style="font:600 14px Archivo">Shop price estimate (tap a shop in 08)</span></div>
+<div data-screen-label="09 Shop pricing" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:8px 20px 14px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px">
+<div style="font:600 12px Archivo;color:#a8200b">← Shops</div>
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">{{ sel.name }}</div>
+<div style="font:400 12px 'JetBrains Mono',monospace;color:#5e5a58">{{ sel.dist }} mi · ★ {{ sel.rating }} · {{ sel.reports }} owner reports</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #201e1d">
+<div style="padding:14px 20px;display:flex;flex-direction:column;gap:2px">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Estimate</div>
+<div style="font:800 34px/1 Archivo;letter-spacing:-.02em">${{ sel.est }}</div>
+<div style="font:400 12px Archivo;color:#5e5a58">±${{ sel.spread }} typical range</div>
+</div>
+<div style="padding:14px 20px;display:flex;flex-direction:column;gap:2px;border-left:2px solid #201e1d">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">vs. your quote</div>
+<div style="font:800 34px/1 Archivo;letter-spacing:-.02em;color:#a8200b">{{ sel.vsQuote }}</div>
+<div style="font:400 12px Archivo;color:#5e5a58">same approved items</div>
+</div>
+</div>
+<div style="padding:12px 20px 6px;display:flex;gap:16px;font:400 11px 'JetBrains Mono',monospace;color:#5e5a58"><span style="display:flex;gap:6px;align-items:center"><span style="width:10px;height:10px;background:#ec3013"></span>this shop</span><span style="display:flex;gap:6px;align-items:center"><span style="width:2px;height:12px;background:#201e1d"></span>your quote</span><span>bar = area range</span></div>
+<div style="flex:1;overflow-y:auto">
+<sc-for list="{{ selRows }}" as="row" hint-placeholder-count="4">
+<div style="padding:12px 20px;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between"><span style="font:600 14px Archivo">{{ row.name }}</span><span style="font:800 14px Archivo">${{ row.shop }}</span></div>
+<div style="position:relative;height:14px;background:#e2e0e0">
+<div style="position:absolute;left:{{ row.shopPct }}%;top:0;width:14px;height:14px;margin-left:-7px;background:#ec3013"></div>
+<div style="position:absolute;left:{{ row.quotePct }}%;top:-4px;width:2px;height:22px;background:#201e1d"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font:400 11px 'JetBrains Mono',monospace;color:#5e5a58"><span>${{ row.low }}</span><span>median ${{ row.median }}</span><span>${{ row.high }}</span></div>
+</div>
+</sc-for>
+</div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px">
+<button style="text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Get this quote in writing →</button>
+<div style="font:400 11px/1.4 Archivo;color:#5e5a58">Estimates from {{ sel.reports }} invoices uploaded in the last 12 months. Final price set by the shop.</div>
+</div>
+</div>
+</div>
+
+<div id="1d" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1d" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">10</a><span style="font:600 14px Archivo">Lifetime savings</span></div>
+<div data-screen-label="10 Savings" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo;background:#ec3013;color:#fff"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:12px 20px 22px;background:#ec3013;color:#fff;display:flex;flex-direction:column;gap:6px;border-bottom:2px solid #201e1d">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase">Saved with ShopSense</div>
+<div style="font:800 72px/.95 Archivo;letter-spacing:-.04em">${{ lifetimeSaved }}</div>
+<div style="font:400 14px Archivo">across {{ visitCount }} visits · {{ lifetimePct }}% of everything you were quoted</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #201e1d">
+<div style="padding:14px 20px;display:flex;flex-direction:column;gap:2px">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Declined unneeded</div>
+<div style="font:800 26px/1 Archivo">${{ lifetimeDeclined }}</div>
+</div>
+<div style="padding:14px 20px;display:flex;flex-direction:column;gap:2px;border-left:2px solid #201e1d">
+<div style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Kept up on schedule</div>
+<div style="font:800 26px/1 Archivo">{{ onSchedule }}</div>
+</div>
+</div>
+<div style="padding:14px 20px 4px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Visit history</div>
+<div style="flex:1;overflow-y:auto">
+<sc-for list="{{ visits }}" as="v" hint-placeholder-count="4">
+<div style="padding:12px 20px;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+<div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">{{ v.shop }}</span><span style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">{{ v.date }} · {{ v.miles }} mi</span></div>
+<span style="font:800 16px Archivo;color:#a8200b">−${{ v.saved }}</span>
+</div>
+<div style="display:flex;height:10px;background:#e2e0e0">
+<div style="width:{{ v.paidPct }}%;background:#201e1d"></div>
+<div style="width:{{ v.savedPct }}%;background:#ec3013"></div>
+</div>
+<div style="display:flex;justify-content:space-between;font:400 11px 'JetBrains Mono',monospace;color:#5e5a58"><span>paid ${{ v.paid }}</span><span>quoted ${{ v.quoted }}</span></div>
+</div>
+</sc-for>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid #201e1d;font:600 11px Archivo">
+<div style="padding:12px 0 22px 14px">Quote</div><div style="padding:12px 0 22px 14px">Shops</div><div style="padding:12px 0 22px 14px;color:#ec3013;border-top:3px solid #ec3013;margin-top:-2px">Savings</div><div style="padding:12px 0 22px 14px">Garage</div>
+</div>
+</div>
+</div>
+
+</div>
+<p style="margin:0;font:400 13px/1.5 Archivo;color:#3d3a39">Try next: "a second-visit version of <a href="#1j">04</a> after a few quotes" · "show the peer comparison on <a href="#1a">07</a> per line item" · "a map-first version of <a href="#1b">08</a>"</p>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultRadius&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[5,10,25,50],&quot;default&quot;:10,&quot;tsType&quot;:&quot;number&quot;},&quot;savingsFormat&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dollars&quot;,&quot;percent&quot;],&quot;default&quot;:&quot;dollars&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;showUpsell&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const SERVICES = [
+  { id:'oil', name:'Synthetic oil & filter', price:89, median:72, v:'now', note:'Due at 67,500 mi — you are 920 mi past.', src:'Maintenance Minder A1' },
+  { id:'rot', name:'Tire rotation', price:35, median:25, v:'now', note:'Every 7,500 mi. Last done at 60,800.', src:'Honda schedule' },
+  { id:'air', name:'Engine air filter', price:65, median:42, v:'soon', note:'Due at 75,000 mi. Fine to do now if the price is fair.', src:"Owner's manual" },
+  { id:'brk', name:'Front brake pads', price:289, median:240, v:'ask', note:'Wear item — ask for the pad measurement. Replace under 3 mm.', src:'Inspection required' },
+  { id:'cab', name:'Cabin air filter', price:59, median:45, v:'not', note:'Replaced at 61,200 mi per your history.', src:'Your service record' },
+  { id:'trn', name:'Transmission fluid flush', price:249, median:180, v:'not', note:'Not due until 90,000 mi. Honda specifies drain & fill, not flush.', src:'Honda schedule' },
+  { id:'fuel', name:'Fuel injection cleaning', price:179, median:120, v:'not', note:'Not on the manufacturer schedule for this engine.', src:'Honda schedule · TSBs' },
+];
+const VERDICT = {
+  now:  { label:'Needed now',   bg:'#201e1d', fg:'#f3f2f2', bd:'#201e1d' },
+  soon: { label:'Due soon',     bg:'#eae9e9', fg:'#201e1d', bd:'#201e1d' },
+  ask:  { label:'Ask the shop', bg:'#f3f2f2', fg:'#a8200b', bd:'#ec3013' },
+  not:  { label:'Not due',      bg:'#ec3013', fg:'#ffffff', bd:'#ec3013' },
+};
+const SHOPS = [
+  { id:'here', name:'Westgate Honda', dist:0.0, rating:4.1, reports:322, mult:null, upsell:61 },
+  { id:'north', name:'Northside Auto Care', dist:2.1, rating:4.7, reports:214, mult:0.84, upsell:12 },
+  { id:'elm', name:'Elm St. Garage', dist:3.4, rating:4.8, reports:96, mult:0.92, upsell:8 },
+  { id:'rapid', name:'Rapid Lube Express', dist:4.8, rating:3.9, reports:410, mult:0.79, upsell:54 },
+  { id:'han', name:'Hanover Imports', dist:7.9, rating:4.5, reports:61, mult:1.06, upsell:19 },
+  { id:'cedar', name:'Cedar Park Auto', dist:12.5, rating:4.6, reports:148, mult:0.75, upsell:15 },
+  { id:'ridge', name:'Ridgeline Service Co.', dist:18.2, rating:4.4, reports:39, mult:0.71, upsell:22 },
+];
+const PAST = [
+  { shop:'Elm St. Garage', date:'Jun 2026', miles:'61,200', quoted:412, paid:268 },
+  { shop:'Rapid Lube Express', date:'Jan 2026', miles:'55,900', quoted:389, paid:98 },
+  { shop:'Westgate Honda', date:'Aug 2025', miles:'50,300', quoted:720, paid:358 },
+];
+const CATALOG = [
+  { k:/oil/i, v:'now', median:72, note:'Matches your Maintenance Minder code.', src:'Honda schedule' },
+  { k:/rotat/i, v:'now', median:25, note:'Every 7,500 mi.', src:'Honda schedule' },
+  { k:/coolant|antifreeze/i, v:'not', median:130, note:'First due at 120,000 mi for this engine.', src:'Honda schedule' },
+  { k:/spark/i, v:'not', median:210, note:'Due at 105,000 mi.', src:'Honda schedule' },
+  { k:/align/i, v:'ask', median:110, note:'Only needed if tires wear unevenly — ask to see the readout.', src:'Inspection required' },
+  { k:/battery/i, v:'ask', median:190, note:'Ask for the load-test printout before replacing.', src:'Inspection required' },
+  { k:/wiper/i, v:'soon', median:35, note:'Wear item — cheap to do yourself.', src:'Owner\'s manual' },
+  { k:/brake fluid/i, v:'soon', median:110, note:'Every 3 years — last done Aug 2023.', src:'Honda schedule' },
+  { k:/air filter/i, v:'soon', median:42, note:'Due at 75,000 mi.', src:"Owner's manual" },
+];
+const classify = (name, price) => {
+  const c = CATALOG.find(c => c.k.test(name));
+  if (c) return { v:c.v, median:c.median, note:c.note, src:c.src };
+  return { v:'ask', median: price ? Math.round(price * 0.85) : 0, note: name.trim() ? 'Not a scheduled item — ask the shop what they found and why.' : 'Enter a service name to check it.', src:'Added manually' };
+};
+let nextId = 1;
+class Component extends DCLogic {
+  state = { acctName: 'Jordan', car: { year: '2017', make: 'Honda', model: 'Accord', trim: 'EX', engine: '2.4L I4' }, miles: 68420, drive: 'mixed', history: 0, photoUrl: null, source: 'photo', lines: SERVICES.map(s => ({ ...s })), dec: {}, radius: null, sel: 'north' };
+  renderVals() {
+    const lines = this.state.lines;
+    const dec = Object.fromEntries(lines.map(s => [s.id, this.state.dec[s.id] ?? (s.v === 'not' ? 'decline' : 'approve')]));
+    const editLine = (id, patch) => this.setState(st => ({ lines: st.lines.map(l => {
+      if (l.id !== id) return l;
+      const n = { ...l, ...patch };
+      if (n.manual || 'name' in patch) Object.assign(n, classify(n.name, n.price), { manual: true });
+      return n;
+    }) }));
+    const radius = this.state.radius ?? this.props.defaultRadius ?? 10;
+    const fmt = this.props.savingsFormat ?? 'dollars';
+    const set = (id, d) => () => this.setState(s => ({ dec: { ...s.dec, [id]: d } }));
+    const approved = lines.filter(s => dec[s.id] === 'approve');
+    const quoteTotal = lines.reduce((a, s) => a + s.price, 0);
+    const approvedTotal = approved.reduce((a, s) => a + s.price, 0);
+    const saved = quoteTotal - approvedTotal;
+    const items = lines.filter(s => s.name.trim()).map(s => {
+      const V = VERDICT[s.v], on = dec[s.id] === 'approve';
+      return { ...s, label:V.label, tagBg:V.bg, tagFg:V.fg, tagBorder:V.bd,
+        aBg: on ? '#201e1d' : 'transparent', aFg: on ? '#f3f2f2' : '#201e1d',
+        dBg: on ? 'transparent' : '#ec3013', dFg: on ? '#201e1d' : '#fff',
+        strike: on ? 'none' : 'line-through', rowOpacity: on ? 1 : 0.72,
+        approve: set(s.id, 'approve'), decline: set(s.id, 'decline') };
+    });
+    const medSum = approved.reduce((a, s) => a + s.median, 0);
+    const all = SHOPS.map(sh => {
+      const est = sh.mult == null ? approvedTotal : Math.round(medSum * sh.mult);
+      const spread = Math.round(est * (sh.reports > 150 ? 0.08 : sh.reports > 80 ? 0.12 : 0.18));
+      return { ...sh, est, spread, isHere: sh.mult == null, upsellColor: sh.upsell > 40 ? '#a8200b' : '#5e5a58',
+        rowBg: this.state.sel === sh.id ? '#eae9e9' : 'transparent', select: () => this.setState({ sel: sh.id }) };
+    });
+    const shops = all.filter(s => s.dist <= radius);
+    const minEst = Math.min(...shops.map(s => s.est));
+    shops.forEach(s => { s.isBest = s.est === minEst && shops.length > 1; });
+    const others = all.filter(s => !s.isHere).sort((a, b) => a.est - b.est);
+    const ch = others.filter(s => s.dist <= radius)[0] || others[0];
+    const selShop = all.find(s => s.id === this.state.sel) || all[1];
+    const diffQ = selShop.est - approvedTotal;
+    const sel = { ...selShop, vsQuote: diffQ === 0 ? '$0' : (diffQ < 0 ? '−$' : '+$') + Math.abs(diffQ) };
+    const selRows = approved.map(s => {
+      const low = Math.round(s.median * 0.65), high = Math.round(s.median * 1.5);
+      const shopP = selShop.mult == null ? s.price : Math.round(s.median * selShop.mult);
+      const pct = p => Math.max(0, Math.min(100, ((p - low) / (high - low)) * 100));
+      return { name: s.name, low, high, median: s.median, shop: shopP, shopPct: pct(shopP), quotePct: pct(s.price) };
+    });
+    const visits = [{ shop:'Westgate Honda', date:'Today', miles:'68,420', quoted: quoteTotal, paid: approvedTotal }, ...PAST].map(v => ({
+      ...v, saved: v.quoted - v.paid, paidPct: (v.paid / (v.quoted || 1)) * 100, savedPct: ((v.quoted - v.paid) / (v.quoted || 1)) * 100 }));
+    const lifeQuoted = visits.reduce((a, v) => a + v.quoted, 0);
+    const lifeSaved = visits.reduce((a, v) => a + v.saved, 0);
+    const radii = [5, 10, 25, 50].map(r => ({ label: r + ' mi', bg: r === radius ? '#201e1d' : 'transparent', fg: r === radius ? '#f3f2f2' : '#201e1d', pick: () => this.setState({ radius: r }) }));
+    const onFile = e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this.state.photoUrl) URL.revokeObjectURL(this.state.photoUrl); this.setState({ photoUrl: f.type.startsWith('image/') ? URL.createObjectURL(f) : null, fileName: f.name }); };
+    const hasPhoto = !!this.state.photoUrl;
+    return {
+      onFile, hasPhoto, noPhoto: !hasPhoto, photoBg: hasPhoto ? 'url("' + this.state.photoUrl + '")' : 'none',
+      captureStatus: this.state.fileName ? 'Got it · ' + this.state.fileName.slice(0, 22) : 'Looking for a document…',
+      captureHint: this.state.fileName ? 'tap shutter to retake' : 'hold steady',
+      isPhoto: this.state.source === 'photo', isVerbal: this.state.source === 'verbal',
+      goVerbal: () => this.setState({ source: 'verbal' }),
+      sources: [['photo','From photo'],['verbal','Verbal quote']].map(([id, label]) => ({ label, bg: this.state.source === id ? '#201e1d' : 'transparent', fg: this.state.source === id ? '#f3f2f2' : '#201e1d', pick: () => this.setState({ source: id }) })),
+      confirmTitle: this.state.source === 'verbal' ? 'What did they say?' : 'Is this right?',
+      confirmSub: this.state.source === 'verbal' ? 'Type the items the advisor quoted out loud. Edit anything below.' : 'Read in 2.4 s. Check the flagged field and edit any line before we check the quote.',
+      odoNote: this.state.source === 'verbal' ? 'Check your dash. Your last visit was 61,200 mi.' : 'Digits were blurred on the photo. Your last visit was 61,200 mi — confirm from your dash.',
+      lineCount: lines.length,
+      totalCheck: quoteTotal === 965 ? 'Items add up to $965 — matches the quote total.' : 'Edited — items now total $' + quoteTotal + ' (photo showed $965).',
+      lines: lines.map(l => ({ ...l, priceStr: l.price ? String(l.price) : '',
+        onName: e => editLine(l.id, { name: e.target.value }),
+        onPrice: e => editLine(l.id, { price: Math.max(0, Math.round(parseFloat(e.target.value.replace(/[^0-9.]/g, '')) || 0)) }),
+        remove: () => this.setState(st => ({ lines: st.lines.filter(x => x.id !== l.id) })) })),
+      addLine: () => this.setState(st => ({ lines: [...st.lines, { id: 'm' + nextId++, name: '', price: 0, manual: true, ...classify('', 0) }] })),
+      acctName: this.state.acctName, onAcctName: e => this.setState({ acctName: e.target.value }),
+      greeting: 'Hi, ' + (this.state.acctName.trim() || 'there'),
+      car: { ...this.state.car, ...Object.fromEntries(['year','make','model','trim','engine'].map(k => ['on' + k[0].toUpperCase() + k.slice(1), e => { const val = e.target.value; this.setState(st => ({ car: { ...st.car, [k]: val } })); }])) },
+      carShort: [this.state.car.year, this.state.car.model, this.state.car.trim].join(' '),
+      carFull: [this.state.car.year, this.state.car.make, this.state.car.model, this.state.car.trim].join(' ') + ' · ' + this.state.car.engine,
+      milesStr: this.state.miles ? this.state.miles.toLocaleString() : '',
+      onMiles: e => this.setState({ miles: parseInt(e.target.value.replace(/\D/g, '').slice(0, 7)) || 0 }),
+      driveLabel: { highway:'Highway', mixed:'Normal', severe:'Severe' }[this.state.drive],
+      drives: [['highway','Mostly highway','Long trips, steady speeds'],['mixed','Mixed','Commuting, errands'],['severe','Severe','Short trips, towing, extreme heat or cold']].map(([id,label,sub]) => ({ label, sub, bg: this.state.drive === id ? '#201e1d' : '#f3f2f2', fg: this.state.drive === id ? '#f3f2f2' : '#201e1d', pick: () => this.setState({ drive: id }) })),
+      historyLabel: this.state.history ? this.state.history + ' added' : 'photo · PDF',
+      onHistory: e => { const n = e.target.files ? e.target.files.length : 0; this.setState(st => ({ history: st.history + n })); },
+      peerCount: '1,284',
+      peerDesc: this.state.car.model + ' owners at ' + Math.max(0, Math.floor(this.state.miles / 10000) * 10) + 'k–' + (Math.floor(this.state.miles / 10000) * 10 + 10) + 'k mi, ' + ({ highway:'highway', mixed:'mixed', severe:'severe' }[this.state.drive]) + ' driving.',
+      peers: [
+        { label:'Yearly maintenance spend', you: '$497 you', peerPct: 61, youPct: 50, note: 'Peers median $612 · you spend 19% less' },
+        { label:'Quotes with not-due items', you: '3 of 4 yours', peerPct: 58, youPct: 75, note: 'Peers see it on 58% of dealer quotes' },
+        { label:'Declined a trans. fluid flush', you: 'You did', peerPct: 78, youPct: 100, note: '78% of peers declined at this mileage' },
+      ],
+      fields: [ { label:'Shop', value:'Westgate Honda' }, { label:'Vehicle', value:'2017 Honda Accord EX' }, { label:'VIN', value:'1HGCR2F5•••••4471' }, { label:'Quote date', value:'Nov 10, 2026' } ],
+      items, quoteTotal, approvedTotal, approvedCount: approved.length,
+      savedLabel: fmt === 'percent' ? Math.round((saved / (quoteTotal || 1)) * 100) + '%' : '$' + saved,
+      savedSub: fmt === 'percent' ? '$' + saved + ' declined' : Math.round((saved / (quoteTotal || 1)) * 100) + '% of the quote',
+      cheapest: { name: ch.name, dist: ch.dist, est: ch.est, diff: Math.max(0, approvedTotal - ch.est) },
+      radii, radius, shops, shopCount: shops.length, ringSize: Math.min(130, 40 + radius * 3.2),
+      showUpsell: this.props.showUpsell ?? true,
+      sel, selRows,
+      visits, visitCount: visits.length, lifetimeSaved: lifeSaved.toLocaleString(), lifetimeDeclined: lifeSaved.toLocaleString(),
+      lifetimePct: Math.round((lifeSaved / lifeQuoted) * 100), onSchedule: '4 / 4 visits',
+    };
+  }
+}
+</script>
+</body>
+</html>

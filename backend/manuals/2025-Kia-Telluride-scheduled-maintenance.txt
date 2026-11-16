@@ -1,0 +1,576 @@
+=====================================================================
+2025 KIA TELLURIDE - OWNER'S MANUAL, CHAPTER 8.4 "SCHEDULED MAINTENANCE SERVICE"
+Source: https://ownersmanual.kia.com/full_webhelp/ON/2025/en_US/topics/chapter8_4.html
+Retrieved 2026-11-16 from Kia's official online owner's manual (US, English).
+Engine covered by this schedule: (Gasoline) 3.8 GDi.
+=====================================================================
+
+PART A - NORMAL SCHEDULE TABLE, REBUILT ROW BY ROW
+(The web page lays this out as a grid with merged cells. The ShopSense team
+rebuilt it below so each row lines up with its mileage columns. Kia's original
+page text, unedited, is in PART B. If they ever disagree, PART B is authoritative.)
+
+Columns (whichever comes first):
+  Miles x1,000:  8   16  24  32  40  48  56  64  72  80  88  96
+  Months:        12  24  36  48  60  72  84  96  108 120 132 144
+R = Replace or change.  I = Inspect and if necessary adjust, correct, clean or replace.  - = nothing.
+
+Engine oil and engine oil filter (3.8 GDi): R   R   R   R   R   R   R   R   R   R   R   R
+Climate control air filter:                 I   R   I   R   I   R   I   R   I   R   I   R
+Air cleaner filter:                         I   I   R   I   I   R   I   I   R   I   I   R
+Air conditioner refrigerant, Air conditioner compressor, 12V Battery condition,
+Vacuum hoses, Brake discs and pads, Brake lines/hoses/connections, Suspension
+ball joints, Steering gear rack/linkage/boots, Exhaust system, Cooling system
+  (one merged column group covering all ten):  I   I   I   I   I   I   I   I   I   I   I   I
+Drive shaft and boots, Propeller shaft (AWD), Fuel tank and fuel cap, Fuel lines/
+hoses/connections, Fuel tank air filter
+  (one merged column group covering all five):  -   I   -   I   -   I   -   I   -   I   -   I
+Drive belts:                                -   -   -   -   -   I   I   I   I   I   I   I
+Tire rotation: every 8,000 miles.
+Fuel additives: add every 8,000 miles or 12 months (only if TOP TIER detergent gasoline is not available).
+Brake fluid: inspect every 8,000 miles or 12 months; replace every 48,000 miles or 48 months.
+Spark plugs: replace every 96,000 miles.
+Coolant (engine): first replace at 120,000 miles or 120 months; after that every 24,000 miles or 24 months.
+Differential oil (rear) (AWD) and Transfer case oil (AWD): inspect every 40,000 miles or 48 months.
+Valve clearance: inspect every 56,000 miles or 72 months.
+Automatic transmission (AT) fluid: no service required (normal schedule).
+
+PART B - ORIGINAL PAGE TEXT (unedited; the table cells appear one per line)
+---------------------------------------------------------------------
+Search by Title only
+
+Home> Maintenance> Scheduled maintenance service
+
+Scheduled maintenance service
+
+Follow the Normal Maintenance Schedule if the vehicle is usually operated where none of the following conditions apply.
+
+If any of the following conditions apply, follow the Maintenance Under Severe Usage Conditions.
+
+Repeated driving short distance of less than 5 miles (8 km) in normal temperature or less than 10 miles (16 km) in freezing temperature
+
+Extensive engine idling or low speed driving for long distances
+
+Driving on rough, dusty, muddy, unpaved, graveled or salt-spread roads
+
+Driving in areas using salt or other corrosive materials or in very cold weather
+
+Driving in heavy dust condition
+
+Driving in heavy traffic area
+
+Driving on uphill, downhill, or mountain road repeatedly
+
+Using for towing or camping and driving with loading on the roof
+
+Driving as a patrol car, taxi, other commercial use of vehicle towing
+
+Frequently driving at high speeds or with rapid acceleration/deceleration.
+
+Frequently driving in stop-and-go conditions.
+
+If your vehicle is operated in any of the prior listed conditions, you should inspect, replace or refill more frequently, using the severe usage maintenance schedule instead of the normal usage maintenance schedule.
+
+NOTICE
+
+After 10 years or 100,000 miles (150,000 km), we recommend using severe maintenance schedule.
+
+Normal maintenance schedule
+
+The following maintenance services must be performed to ensure good emission control and performance. Keep receipts for all vehicle services to protect your warranty. Where both mileage and date are shown, the frequency of service is determined by whichever occurs first.
+
+R: Replace or change
+
+I: Inspect and if necessary, adjust, correct, clean or replace.
+
+Number of months or driving distance, whichever comes first
+
+Months
+
+12
+
+24
+
+36
+
+48
+
+60
+
+72
+
+84
+
+96
+
+108
+
+120
+
+132
+
+144
+
+Miles×1,000
+
+8
+
+16
+
+24
+
+32
+
+40
+
+48
+
+56
+
+64
+
+72
+
+80
+
+88
+
+96
+
+Km×1,000
+
+13
+
+26
+
+39
+
+52
+
+65
+
+78
+
+91
+
+104
+
+117
+
+130
+
+143
+
+156
+
+Tire rotation
+
+Rotate every 8,000 miles (13,000 km)
+
+Fuel additives *1
+
+Add every 8,000 miles (13,000 km) or 12 months
+
+Engine oil and engine oil filter *2
+
+(Gasoline) 3.8 GDi
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+R
+
+Climate control air filter
+
+I
+
+R
+
+I
+
+R
+
+I
+
+R
+
+I
+
+R
+
+I
+
+R
+
+I
+
+R
+
+Air cleaner filter
+
+I
+
+I
+
+R
+
+I
+
+I
+
+R
+
+I
+
+I
+
+R
+
+I
+
+I
+
+R
+
+Brake fluid
+
+Inspect every 8,000 miles (13,000 km) or 12 months
+
+Replace every 48,000 miles (78,000 km) or 48 months
+
+Spark plugs
+
+Replace every 96,000 miles (156,000 km)
+
+Coolant (Engine)*3
+
+At first, replace at 120,000 miles (195,000 km) or 120 months
+
+After that, replace every 24,000 miles (39,000 km) or 24 months
+
+Air conditioner refrigerant
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+Air conditioner compressor
+
+12V Battery condition
+
+Vacuum hoses
+
+Brake discs and pads
+
+Brake lines, hoses and connections
+
+Suspension ball joints
+
+Steering gear rack, linkage and boots
+
+Exhaust system
+
+Cooling system
+
+Drive shaft and boots
+
+-
+
+I
+
+-
+
+I
+
+-
+
+I
+
+-
+
+I
+
+-
+
+I
+
+-
+
+I
+
+Propeller shaft
+
+AWD
+
+Fuel tank and fuel cap
+
+Fuel lines, hoses and connections
+
+Fuel tank air filter
+
+Differential oil (rear)*4
+
+AWD
+
+Inspect every 40,000 miles (65,000 km) or 48 months
+
+Transfer case oil*5
+
+AWD
+
+Drive belts*6
+
+-
+
+-
+
+-
+
+-
+
+-
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+I
+
+Valve clearance *7
+
+Inspect every 56,000 miles (91,000 km) or 72 months
+
+Automatic transmission (AT) fluid*
+
+No service required
+
+*1. Fuel additives
+
+If TOP TIER Detergent Gasoline is not available, one bottle of additive is recommended. Additives are available from your authorized Kia dealer along with information on how to use them. Do not mix other additives.
+
+*2. Engine oil and engine oil filter
+
+It is normal for engine oil to be consumed during driving. Check your engine oil level regularly.
+
+The engine oil change interval for normal operating conditions is based on the use of the recommended engine specification. If the recommended engine oil specification is not used, then replace the engine oil according to the maintenance schedule for severe operating conditions.
+
+Never add any additives to the engine oil. Engine oil additives can change its properties of engine oil and may cause serious engine failure.
+
+*3. Coolant (Engine)
+
+When adding coolant, use only deionized water or soft water for your vehicle and never mix hard water in the coolant filled at the factory. An improper coolant mixture can result in serious malfunction or engine damage.
+
+*4. Differential oil (rear) (AWD)
+
+If the vehicle has been submerged in water or in a flooded area, the fluids should be changed as a precaution.
+
+*5. Transfer case oil (AWD)
+
+If the vehicle has been submerged in water or in a flooded area, the fluids should be changed as a precaution.
+
+*6. Drive belts (Engine)
+
+Inspect the alternator, water pump and air conditioner drive belts and, if necessary, repair or replace. Inspect drive belt tensioner, idler and alternator pulley and if necessary correct or replace.
+
+*7. Valve clearance
+
+Inspect for excessive valve noise and/or engine vibration and adjust if necessary. Have an authorized Kia dealer perform the operation.
+
+*Transmission fluid
+
+If the vehicle has been submerged in water or in a flooded area, the fluids should be changed as a precaution.
+
+Fuel filter (Gasoline engine)
+
+The fuel filter is normally maintenance free but periodic inspection is recommended during scheduled maintenance to look for conditions caused by poor fuel quality.
+
+If there are safety risks such as fuel flow restriction, surging, loss of power, hard starting problem etc, replace the fuel filter immediately regardless of maintenance schedule and consult an authorized Kia dealer for details.
+
+Maintenance Under Severe Usage Conditions
+
+The following items must be serviced more frequently on cars mainly used under severe driving conditions. Refer to the chart below for the appropriate maintenance intervals.
+
+R: Replace
+
+I: Inspect and if necessary, adjust, correct, clean or replace
+
+Maintenance item
+
+Maintenance operation
+
+Maintenance intervals
+
+Driving condition
+
+Engine oil and engine oil filter
+
+R
+
+Every 5,000 miles (8,000 km) or 6 months
+
+A, B, C, D, E, F, G, H, I, J, K
+
+Automatic transmission (AT) fluid
+
+R
+
+Every 56,000 miles (91,000 km)
+
+A, C, F, G, H, I, J, K
+
+Transfer case oil
+
+AWD
+
+R
+
+Every 72,000 miles (117,000 km)
+
+C, E, G, H, I, J
+
+Differential oil (rear)
+
+AWD
+
+R
+
+Every 72,000 miles (117,000 km)
+
+C, E, G, H, I, J
+
+Air cleaner filter
+
+R
+
+More frequently
+
+C, E
+
+Spark plugs
+
+R
+
+More frequently
+
+A, B, F, G, H, I, K
+
+Climate control air filter
+
+R
+
+More frequently
+
+C, E, G
+
+Brake discs, pads and calipers
+
+I
+
+More frequently
+
+C, D, E, G, H, I, J, K
+
+Suspension ball joints
+
+I
+
+More frequently
+
+C, D, E, G, H, I
+
+Steering gear rack, linkage and boots
+
+I
+
+More frequently
+
+C, D, E, F, G, H, I
+
+Drive shafts and boots
+
+I
+
+More frequently
+
+C, D, E, F, G, H, I, J
+
+Propeller shaft
+
+AWD
+
+I
+
+More frequently
+
+C, D, E, F, G, H, I, J
+
+Severe Driving Conditions
+
+A: Repeatedly driving short distance of less than 5 miles (8 km) in normal temperature or less than 10 miles (16 km) in freezing temperature.
+
+B: Extensive engine idling or low speed driving for long distances
+
+C: Driving on rough, dusty, muddy, unpaved, graveled or salted roads
+
+D: Driving in areas using salt or other corrosive materials or in very cold weather
+
+E: Driving in heavy dust condition
+
+F: Driving in heavy traffic area
+
+G: Driving on uphill, downhill, or mountain roads repeatedly
+
+H: Using for towing or camping and driving with loading on the roof
+
+I: Driving as a patrol car, taxi, other commercial use of vehicle towing
+
+J: Frequently driving under high speed or rapid acceleration/deceleration
+
+K: Frequently driving in stop-and-go conditions
