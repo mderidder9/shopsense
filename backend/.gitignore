@@ -7,3 +7,8 @@ __pycache__/
 
 # Test logs (may contain inputs you don't want to publish)
 logs/
+
+# Local database and login-cookie key
+data/shopsense.db
+data/shopsense.db-*
+data/secret_key

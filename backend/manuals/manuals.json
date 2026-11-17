@@ -1,0 +1,17 @@
+{
+  "_note": "Which owner's manual belongs to which car. A manual is used ONLY when the car's year, make, model, trim AND engine (which includes the drivetrain, e.g. '3.8L V6 GDi · FWD') all match this entry, ignoring capitals and extra spaces. Every field is required: an entry missing any of them is never used. A car with no exact match gets no AI check, so a manual for another car is never sent. To add a car: put its manual (PDF or .txt) in this folder and add an entry, spelling make/model/trim/engine exactly as the car form on screen 02 lists them.",
+  "manuals": [
+    {
+      "years": [2025],
+      "make": "Kia",
+      "model": "Telluride",
+      "trims": ["LX", "S", "EX", "EX X-Line", "EX X-Pro", "SX", "SX X-Line", "SX X-Pro",
+                "SX-Prestige", "SX-Prestige X-Line", "SX-Prestige X-Pro"],
+      "engines": ["3.8L V6 GDi · FWD", "3.8L V6 GDi · AWD"],
+      "market": "US",
+      "file": "2025-Kia-Telluride-scheduled-maintenance.txt",
+      "label": "Kia's 2025 Telluride owner's manual (US) · scheduled maintenance · 3.8 GDi, FWD and AWD",
+      "_why": "The schedule page covers only the 3.8 GDi gasoline engine; it includes AWD-only items, so both drivetrains are covered. Same schedule for every 2025 trim."
+    }
+  ]
+}
