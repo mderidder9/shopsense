@@ -177,12 +177,14 @@ def estimate_cost(usage, prices: dict) -> float:
 # THE AI CALL - the one function the rest of the app uses.
 # ---------------------------------------------------------------------------
 def run_maintenance_check(vehicle: dict, manual: dict, radius_miles: float = 10,
-                          config_overrides: dict | None = None, history: list[dict] | None = None) -> dict:
+                          config_overrides: dict | None = None, history: list[dict] | None = None,
+                          log_context: dict | None = None) -> dict:
     """
     vehicle: {"year", "make", "model", "mileage", optional "trim", "engine", "driving"}
     manual:  {"filename", "kind": "pdf"|"text", "bytes"}
     config_overrides: optional, e.g. {"model": "claude-sonnet-5-5"} - used by speed tests; the app uses config.json.
-    history: earlier finalized visits for this vehicle (see service_history.py), oldest first.
+    history: earlier finalized visits for this vehicle (see db.get_visits), oldest first.
+    log_context: extra fields for the ai_request log line, e.g. {"user_id", "vehicle_id"}.
     Returns: {"request_id", "mode", "model", "result", "latency_ms", "cost_usd"}
     """
     cfg = {**load_config(), **(config_overrides or {})}
@@ -198,7 +200,7 @@ def run_maintenance_check(vehicle: dict, manual: dict, radius_miles: float = 10,
     }
 
     # 1) Record exactly what we are about to send.
-    log_event("ai_request", request_id,
+    log_event("ai_request", request_id, **(log_context or {}),
               mode=cfg["mode"], provider=cfg["provider"], model=cfg["model"], effort=cfg.get("effort"),
               input_values={**vehicle, "radius_miles": radius_miles, "service_history_visits": len(history)},
               service_history=history,

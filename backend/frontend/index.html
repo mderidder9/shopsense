@@ -14,11 +14,30 @@
 <div style="font:600 12px/1 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#a8200b">ShopSense · Mockup v1</div>
 <div style="font:800 40px/1.02 Archivo;letter-spacing:-.02em">At the counter, with a second opinion.</div>
 </div>
-<div style="padding:16px 24px 0;border-left:2px solid #201e1d;font:400 15px/1.5 Archivo;text-wrap:pretty">Scenario: 2017 Accord, 68,420 mi, a $965 dealer quote. Screens 01–10 are one connected flow — sign up and add a car (01–04), snap, upload or type a quote (05–06), and approve/decline on 07 updates savings, shop estimates and history live. <b style="color:#a8200b">Real AI: screen 04b</b> (what's due + which shop), which also fills "Due now" on 04 and the AI picks on 08. Everything else is simulated. <a href="/log" target="_blank">Open AI log →</a></div>
+<div style="padding:16px 24px 0;border-left:2px solid #201e1d;font:400 15px/1.5 Archivo;text-wrap:pretty">Scenario: 2017 Accord, 68,420 mi, a $965 dealer quote. Screens 00–10 are one connected flow — sign in or sign up and add a car (00–04; accounts and garages are saved in the local database), snap, upload or type a quote (05–06), and approve/decline on 07 updates savings, shop estimates and history live. <b style="color:#a8200b">Real AI: screen 04b</b> (what's due + which shop), which also fills "Due now" on 04 and the AI picks on 08. Everything else is simulated. <a href="/log" target="_blank">Open AI log →</a></div>
 <div style="padding:16px 0 0 24px;border-left:2px solid #201e1d;font:400 15px/1.5 Archivo;text-wrap:pretty">Assumptions: estimates come from user-uploaded invoices (report count shown for trust); "upsell rate" = share of a shop's quotes containing not-due items. Mobile-first, since the decision happens standing at the service desk.</div>
 </div>
 <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-start">
 
+<div id="1s" style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:10px;align-items:baseline"><a href="#1s" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">00</a><span style="font:600 14px Archivo">Sign in</span></div>
+<div data-screen-label="00 Sign in" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
+<div style="display:flex;justify-content:space-between;padding:14px 20px 8px;font:600 13px Archivo"><span>9:41</span><span style="font:400 12px 'JetBrains Mono',monospace">5G ▮▮▮</span></div>
+<div style="padding:24px 20px 18px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:10px">
+<div style="font:800 15px Archivo;letter-spacing:.02em;color:#ec3013">SHOPSENSE</div>
+<div style="font:800 34px/1.02 Archivo;letter-spacing:-.02em;text-wrap:pretty">Welcome back.</div>
+<div style="font:400 14px/1.45 Archivo;color:#3d3a39;text-wrap:pretty">Sign in to see your garage, your cars' service history and what's due next.</div>
+</div>
+<form onSubmit="{{ submitLogin }}" style="flex:1;min-height:0;display:flex;flex-direction:column;margin:0">
+<div style="flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Email</span><input type="email" name="email" autocomplete="username" placeholder="you@email.com" value="{{ authEmail }}" onChange="{{ onAuthEmail }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Password</span><input type="password" name="password" autocomplete="current-password" value="{{ authPassword }}" onChange="{{ onAuthPassword }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<sc-if value="{{ hasLoginErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="padding:10px 12px;background:#fbe4df;border-left:3px solid #ec3013;font:400 13px/1.4 Archivo;color:#a8200b">✕ {{ authErrText }}</div></sc-if>
+</div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button type="submit" style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:{{ authBtnBg }};color:#fff;border:0">{{ loginLabel }}</button><div style="font:400 11px/1.4 Archivo;color:#5e5a58">New to ShopSense? <a href="#1g">Create an account</a>.</div></div>
+</form>
+</div>
+</div>
 <div id="1g" style="display:flex;flex-direction:column;gap:12px">
 <div style="display:flex;gap:10px;align-items:baseline"><a href="#1g" style="font:600 11px 'JetBrains Mono',monospace;padding:3px 7px;background:#201e1d;color:#f3f2f2;text-decoration:none">01</a><span style="font:600 14px Archivo">Create account</span></div>
 <div data-screen-label="01 Create account" style="width:390px;height:844px;background:#f3f2f2;border:2px solid #201e1d;display:flex;flex-direction:column;overflow:hidden">
@@ -29,19 +48,18 @@
 <div style="font:800 34px/1.02 Archivo;letter-spacing:-.02em;text-wrap:pretty">A second opinion before you say yes.</div>
 <div style="font:400 14px/1.45 Archivo;color:#3d3a39;text-wrap:pretty">An account keeps your cars and service history in one place — so every check gets more specific to you.</div>
 </div>
+<form onSubmit="{{ submitRegister }}" style="flex:1;min-height:0;display:flex;flex-direction:column;margin:0">
 <div style="flex:1;overflow-y:auto;padding:18px 20px;display:flex;flex-direction:column;gap:14px">
-<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Name</span><input type="text" value="{{ acctName }}" onChange="{{ onAcctName }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
-<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Email</span><input type="text" placeholder="you@email.com" type="email" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
-<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Password</span><input type="text" placeholder="8+ characters" type="password" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:4px">
-<button style="text-align:left;padding:12px;font:600 14px Archivo;background:transparent;border:2px solid #201e1d;color:#201e1d">Continue with Apple</button>
-<button style="text-align:left;padding:12px;font:600 14px Archivo;background:transparent;border:2px solid #201e1d;border-left:0;color:#201e1d">Continue with Google</button>
-</div>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Name · optional</span><input type="text" name="name" autocomplete="given-name" value="{{ acctName }}" onChange="{{ onAcctName }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Email · you'll sign in with this</span><input type="email" name="email" autocomplete="username" placeholder="you@email.com" value="{{ authEmail }}" onChange="{{ onAuthEmail }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Password</span><input type="password" name="new-password" autocomplete="new-password" placeholder="8+ characters" value="{{ authPassword }}" onChange="{{ onAuthPassword }}" style="font:600 15px Archivo;padding:12px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label>
+<sc-if value="{{ hasRegErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="padding:10px 12px;background:#fbe4df;border-left:3px solid #ec3013;font:400 13px/1.4 Archivo;color:#a8200b">✕ {{ authErrText }}</div></sc-if>
 <div style="display:flex;flex-direction:column;border-top:2px solid #201e1d;margin-top:6px">
 <div style="padding:10px 0;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">Track every car</span><span style="font:400 12.5px Archivo;color:#5e5a58">Mileage, history and what's due next.</span></div><div style="padding:10px 0;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">Build your record</span><span style="font:400 12.5px Archivo;color:#5e5a58">Each quote you check is saved to the car.</span></div><div style="padding:10px 0;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">Compare with owners like you</span><span style="font:400 12.5px Archivo;color:#5e5a58">See what similar cars needed and paid.</span></div>
 </div>
 </div>
-<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Create account →</button><div style="font:400 11px/1.4 Archivo;color:#5e5a58">Already have one? <a href="#1g">Sign in</a>. We never sell your data to shops.</div></div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button type="submit" style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:{{ authBtnBg }};color:#fff;border:0">{{ registerLabel }}</button><div style="font:400 11px/1.4 Archivo;color:#5e5a58">Already have one? <a href="#1s">Sign in</a>. We never sell your data to shops.</div></div>
+</form>
 </div>
 </div>
 <div id="1h" style="display:flex;flex-direction:column;gap:12px">
@@ -52,7 +70,7 @@
 <div style="padding:4px 20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:4px"><div style="height:4px;background:#ec3013"></div><div style="height:4px;background:#d6d3d2"></div><div style="height:4px;background:#d6d3d2"></div></div>
 <div style="padding:8px 20px 0;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Step 1 of 3</div>
 <div style="padding:6px 20px 16px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:4px">
-<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Add your car</div>
+<div style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">{{ carTitle }}</div>
 <div style="font:400 13px/1.4 Archivo;color:#5e5a58">Maintenance schedules differ by engine and trim, so be exact.</div>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:2px solid #201e1d">
@@ -105,7 +123,7 @@
 <label style="text-align:left;padding:12px;font:600 14px Archivo;border:2px dashed #201e1d;cursor:pointer;display:flex;justify-content:space-between">Upload past invoices<span style="font:400 12px 'JetBrains Mono',monospace;color:#5e5a58">{{ historyLabel }}</span><input type="file" multiple accept="image/*,application/pdf" onChange="{{ onHistory }}" style="display:none"></label>
 </div>
 </div>
-<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Finish setup →</button><div style="font:400 11px Archivo;color:#5e5a58">Skip history for now — you can add it anytime.</div></div>
+<div style="padding:14px 20px 26px;border-top:2px solid #201e1d;display:flex;flex-direction:column;gap:8px"><button onClick="{{ finishSetup }}" style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:{{ setupBg }};color:#fff;border:0">{{ setupLabel }}</button><sc-if value="{{ hasSetupErr }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font:400 12px/1.4 Archivo;color:#a8200b">✕ {{ setupErr }}</div></sc-if><div style="font:400 11px Archivo;color:#5e5a58">Skip history for now — you can add it anytime.</div></div>
 </div>
 </div>
 <div id="1j" style="display:flex;flex-direction:column;gap:12px">
@@ -115,7 +133,7 @@
 
 <div style="padding:8px 20px 14px;border-bottom:2px solid #201e1d;display:flex;justify-content:space-between;align-items:flex-end">
 <div style="display:flex;flex-direction:column;gap:4px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">{{ greeting }}</span><span style="font:800 26px/1.1 Archivo;letter-spacing:-.01em">Your garage</span></div>
-<span style="font:600 13px Archivo;color:#a8200b">+ Add car</span>
+<div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px"><button type="button" onClick="{{ signOut }}" style="padding:0;font:400 11px 'JetBrains Mono',monospace;background:transparent;border:0;color:#5e5a58;text-decoration:underline">Sign out</button><button type="button" onClick="{{ addCar }}" style="padding:0;font:600 13px Archivo;background:transparent;border:0;color:#a8200b">+ Add car</button></div>
 </div>
 <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
 <sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}"><div style="padding:16px 20px;background:#fbe4df;border-bottom:2px solid #ec3013;display:flex;flex-direction:column;gap:8px">
@@ -125,7 +143,12 @@
 <button onClick="{{ checkNextVisit }}" style="width:100%;text-align:left;padding:13px 16px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Check what's due →</button>
 <sc-if value="{{ hasNextMilesErr }}" hint-placeholder-val="{{ false }}"><div style="font:400 12px/1.4 Archivo;color:#a8200b">✕ {{ nextMilesErr }}</div></sc-if>
 </div></sc-if>
-<div style="padding:16px 20px;background:#201e1d;color:#f3f2f2;display:flex;flex-direction:column;gap:10px">
+<sc-if value="{{ noActive }}" hint-placeholder-val="{{ false }}"><div style="padding:16px 20px;background:#201e1d;color:#f3f2f2;display:flex;flex-direction:column;gap:10px">
+<span style="font:800 20px Archivo">{{ noActiveTitle }}</span>
+<span style="font:400 13px/1.4 Archivo;color:#c9c6c5">{{ noActiveText }}</span>
+<button type="button" onClick="{{ addCar }}" style="text-align:left;padding:13px 14px;font:600 15px Archivo;background:#ec3013;color:#fff;border:0">Add your car →</button>
+</div></sc-if>
+<sc-if value="{{ hasActive }}" hint-placeholder-val="{{ true }}"><div style="padding:16px 20px;background:#201e1d;color:#f3f2f2;display:flex;flex-direction:column;gap:10px">
 <div style="display:flex;justify-content:space-between;align-items:baseline"><span style="font:800 20px Archivo">{{ carShort }}</span><span style="font:400 12px 'JetBrains Mono',monospace;color:#c9c6c5">{{ milesShow }} mi</span></div>
 <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #4a4746">
 <div style="padding:10px 0;display:flex;flex-direction:column;gap:2px"><span style="font:400 11px 'JetBrains Mono',monospace;color:#c9c6c5;text-transform:uppercase">Due now</span><span style="font:600 14px Archivo">{{ dueNow }}</span></div>
@@ -133,8 +156,10 @@
 </div>
 <a href="#1k" style="text-align:left;padding:13px 14px;font:600 15px Archivo;background:transparent;color:#f3f2f2;border:2px solid #f3f2f2;text-decoration:none">What's due? Ask ShopSense AI →</a>
 <a href="#1e" style="text-align:left;padding:13px 14px;font:600 15px Archivo;background:#ec3013;color:#fff;text-decoration:none">At the shop? Check a quote →</a>
-</div>
-<div style="padding:12px 20px;border-bottom:2px solid #201e1d;display:flex;justify-content:space-between;align-items:baseline"><div style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">2020 Toyota RAV4 LE</span><span style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">31,050 mi · nothing due</span></div><span style="font:600 12px Archivo;color:#5e5a58">→</span></div>
+</div></sc-if>
+<sc-for list="{{ otherCars }}" as="oc" hint-placeholder-count="1">
+<button type="button" onClick="{{ oc.pick }}" style="width:100%;padding:12px 20px;border:0;border-bottom:2px solid #201e1d;background:transparent;color:#201e1d;display:flex;justify-content:space-between;align-items:baseline;text-align:left"><span style="display:flex;flex-direction:column;gap:2px"><span style="font:600 14px Archivo">{{ oc.label }}</span><span style="font:400 11px 'JetBrains Mono',monospace;color:#5e5a58">{{ oc.sub }}</span></span><span style="font:600 12px Archivo;color:#5e5a58">Switch →</span></button>
+</sc-for>
 <div style="padding:16px 20px 6px;display:flex;flex-direction:column;gap:4px">
 <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#a8200b">Owners like you</span>
 <span style="font:400 13px/1.4 Archivo;color:#3d3a39">{{ peerCount }} {{ peerDesc }}</span>
@@ -165,7 +190,7 @@
 <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column">
 <div style="padding:14px 20px;border-bottom:2px solid #201e1d;display:flex;flex-direction:column;gap:8px">
 <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Checked against</span>
-<div style="font:400 13px/1.4 Archivo;color:#3d3a39">Kia's 2025 Telluride owner's manual · scheduled maintenance</div>
+<div style="font:400 13px/1.4 Archivo;color:{{ manualColor }}">{{ manualText }}</div>
 <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58;margin-top:4px">Service history</span>
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><div style="font:400 13px/1.4 Archivo;color:#3d3a39">{{ historyText }}</div><sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}"><button onClick="{{ resetHistory }}" style="flex:none;padding:0;font:600 12px Archivo;background:transparent;border:0;color:#a8200b;text-decoration:underline">Reset</button></sc-if></div>
 <button onClick="{{ runAi }}" style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:{{ runBg }};color:#fff;border:0">{{ runLabel }}</button>
@@ -521,36 +546,106 @@ const AI_STATUS = {
   inspect:    { label:'Inspect / ask', ...VERDICT.ask },
   not_due:    { label:'Not due',    ...VERDICT.not },
 };
-const DEMO_MANUAL = '2025-Kia-Telluride-scheduled-maintenance.txt';
 const DRIVE_TEXT = { highway:'Mostly highway (long trips, steady speeds)', mixed:'Mixed (commuting, errands)', severe:'City driving in heavy traffic with frequent stop-and-go' };
-const sendFeedback = payload => fetch('/api/feedback', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify(payload) }).catch(() => {});
 const pct = c => (typeof c === 'number' ? Math.round(c * 100) + '%' : '?');
+// ---- Accounts + garage ----
+const DEFAULT_CAR = { year: '2025', make: 'Kia', model: 'Telluride', trim: 'EX', engine: '3.8L V6 GDi · FWD' };  // the car with a manual on file
+const CAR_KEYS = ['year', 'make', 'model', 'trim', 'engine'];
+const jsonReq = (method, body) => ({ method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+const sendFeedback = payload => fetch('/api/feedback', jsonReq('POST', payload)).catch(() => {});
+const goTo = id => { if (location.hash.slice(1) !== id) location.hash = id; };
+// Tells the click-through script below whether someone is signed in (signed-out visitors stay on 00/01).
+const setAuthFlag = on => { document.body.dataset.auth = on ? 'in' : 'out'; window.dispatchEvent(new Event('shopsense-auth')); };
+const carState = v => ({ vehicleId: v.id, car: Object.fromEntries(CAR_KEYS.map(k => [k, v[k] || ''])), miles: v.mileage || 0, drive: v.driving || 'mixed' });
+const NEW_CAR = () => ({ vehicleId: null, car: { ...DEFAULT_CAR }, miles: 0, drive: 'severe' });
+// The AI check and service history belong to one car; cleared whenever the active car changes.
+const NO_CHECK = () => ({ ai: { status:'idle' }, aiFb: {}, history: [], finalized: null, finErr: null, nextMiles: 0, nextMilesErr: null });
+const freshState = () => ({
+  user: null, vehicles: [], acctName: '', authEmail: '', authPassword: '', authErr: null, authBusy: false,
+  ...NEW_CAR(), setupErr: null, setupBusy: false,   // the active car (screens 02-04b); vehicleId null = a new car being set up
+  ...NO_CHECK(),
+  invoices: 0, photoUrl: null, fileName: null, source: 'photo', lines: SERVICES.map(s => ({ ...s })), dec: {}, radius: null, sel: 'north',
+});
 class Component extends DCLogic {
   componentDidMount() {
     fetch('/api/status').then(r => r.json()).then(st => this.setState({ server: st }))
       .catch(() => this.setState({ server: { offline: true } }));
-    this.loadHistory();
+    fetch('/api/me').then(r => r.json()).then(j => (j.ok ? this.signedIn(j, false) : this.signedOut(false)))
+      .catch(() => {});
   }
-  carParams() { const c = this.state.car; return new URLSearchParams({ year: c.year, make: c.make, model: c.model, trim: c.trim, engine: c.engine }).toString(); }
+  // fetch + JSON. A 401 means the session ended (e.g. signed out in another tab), so go back to Sign in.
+  api(url, opts) {
+    return fetch(url, opts).then(r => r.json().then(j => {
+      if (r.status === 401 && j.signed_out) { this.signedOut(true); throw Object.assign(new Error('signed out'), { signedOut: true }); }
+      return j;
+    }));
+  }
+  signedIn(j, afterAuth) {
+    const v = j.vehicles[0];
+    this.setState({ user: j.user, vehicles: j.vehicles, authErr: null, authBusy: false, authPassword: '',
+      ...NO_CHECK(), ...(v ? carState(v) : NEW_CAR()), setupErr: null }, () => {
+      if (afterAuth) goTo(v ? '1j' : '1h');  // a new account goes straight to "Add your car"
+      setAuthFlag(true);
+      this.loadHistory();
+    });
+  }
+  signedOut(navigate) {
+    this.setState(freshState(), () => { setAuthFlag(false); if (navigate) goTo('1s'); });
+  }
+  submitAuth(kind) {  // kind: 'login' | 'register'
+    const s = this.state;
+    if (s.authBusy) return;
+    const body = { email: s.authEmail.trim(), password: s.authPassword };
+    if (kind === 'register') body.name = s.acctName.trim();
+    if (!body.email || !body.password) { this.setState({ authErr: { kind, msg: 'Enter your email and password.' } }); return; }
+    this.setState({ authBusy: true, authErr: null });
+    fetch('/api/auth/' + kind, jsonReq('POST', body)).then(r => r.json())
+      .then(j => (j.ok ? this.signedIn(j, true) : this.setState({ authBusy: false, authErr: { kind, msg: j.error } })))
+      .catch(() => this.setState({ authBusy: false, authErr: { kind, msg: 'Could not reach the ShopSense server.' } }));
+  }
+  signOut() {
+    fetch('/api/auth/logout', jsonReq('POST')).catch(() => {}).then(() => this.signedOut(true));
+  }
+  selectVehicle(v) {
+    this.setState({ ...NO_CHECK(), ...carState(v), setupErr: null }, () => this.loadHistory());
+  }
+  addCar() {
+    this.setState({ ...NO_CHECK(), ...NEW_CAR(), setupErr: null }, () => goTo('1h'));
+  }
+  // Screen 03 "Finish setup": saves a new car to the garage, or the changes to the active one.
+  finishSetup() {
+    const s = this.state, vid = s.vehicleId;
+    if (s.setupBusy) return;
+    const body = { ...s.car, driving: s.drive, mileage: s.miles || null };
+    this.setState({ setupBusy: true, setupErr: null });
+    this.api(vid ? '/api/vehicles/' + vid : '/api/vehicles', jsonReq(vid ? 'PATCH' : 'POST', body))
+      .then(j => {
+        if (!j.ok) { this.setState({ setupBusy: false, setupErr: j.error }); return; }
+        this.setState({ setupBusy: false, vehicles: j.vehicles, vehicleId: j.vehicle.id }, () => { if (!vid) this.loadHistory(); goTo('1j'); });
+      })
+      .catch(e => { if (!e.signedOut) this.setState({ setupBusy: false, setupErr: 'Could not reach the ShopSense server.' }); });
+  }
   loadHistory() {
-    fetch('/api/history?' + this.carParams()).then(r => r.json()).then(j => this.setState({ history: j.visits || [] })).catch(() => {});
+    const vid = this.state.vehicleId;
+    if (!vid) return;
+    this.api('/api/vehicles/' + vid + '/history')
+      .then(j => { if (j.ok && this.state.vehicleId === vid) this.setState({ history: j.visits || [] }); }).catch(() => {});
   }
   // Save this visit: Accepted = done at this mileage, Rejected = declined. The next AI check reads it.
   finalize() {
-    const ai = this.state.ai;
-    if (ai.status !== 'done' || this.state.finalized) return;
+    const ai = this.state.ai, vid = this.state.vehicleId;
+    if (ai.status !== 'done' || this.state.finalized || !vid) return;
     const items = ai.result.services.map(s => ({ service: s.service, status: s.status, confidence: s.confidence,
       explanation: s.explanation, interval: s.interval_from_manual, decision: this.state.aiFb[s.service] || null }));
     if (!items.some(i => i.decision)) { this.setState({ finErr: 'Accept or reject at least one item first.' }); return; }
-    fetch('/api/finalize', { method:'POST', headers:{ 'Content-Type':'application/json' },
-      body: JSON.stringify({ request_id: ai.request_id, car: this.state.car, mileage: ai.mileage, items }) })
-      .then(r => r.json())
+    this.api('/api/vehicles/' + vid + '/finalize', jsonReq('POST', { request_id: ai.request_id, mileage: ai.mileage, items }))
       .then(j => {
         if (!j.ok) { this.setState({ finErr: j.error }); return; }
-        this.setState({ finalized: j.visit, history: j.visits, finErr: null, nextMiles: 0, nextMilesErr: null });
+        this.setState(st => ({ finalized: j.visit, history: j.visits, finErr: null, nextMiles: 0, nextMilesErr: null,
+          vehicles: st.vehicles.map(x => (x.id === j.vehicle.id ? j.vehicle : x)) }));
         setTimeout(() => { location.hash = '1j'; }, 900);  // show "✓ finalized" briefly, then go home to the Garage
       })
-      .catch(() => this.setState({ finErr: 'Could not reach the ShopSense server.' }));
+      .catch(e => { if (!e.signedOut) this.setState({ finErr: 'Could not reach the ShopSense server.' }); });
   }
   // Garage "Back at the shop?" card: take the new mileage, then run the AI check with the saved history.
   checkNextVisit() {
@@ -562,36 +657,45 @@ class Component extends DCLogic {
     this.setState({ miles: n, nextMiles: 0, nextMilesErr: null }, () => { location.hash = '1k'; this.runAi(); });
   }
   resetHistory() {
-    if (!window.confirm('Clear the saved service history for this car? (Useful between demos.)')) return;
-    fetch('/api/history/reset', { method:'POST', headers:{ 'Content-Type':'application/json' }, body: JSON.stringify({ car: this.state.car }) })
+    const vid = this.state.vehicleId;
+    if (!vid || !window.confirm('Clear the saved service history for this car? (Useful between demos.)')) return;
+    this.api('/api/vehicles/' + vid + '/history/reset', jsonReq('POST'))
       .then(() => this.setState({ history: [], finalized: null, finErr: null })).catch(() => {});
   }
   runAi() {
     if (this.state.ai.status === 'loading') return;
+    if (!this.state.vehicleId) {
+      this.setState({ ai: { status:'error', error:'Add this car to your garage first (screen 03, "Finish setup").' } });
+      return;
+    }
+    const active = this.state.vehicles.find(v => v.id === this.state.vehicleId);
+    if (active && !active.manual) {
+      this.setState({ ai: { status:'error', error: active.manual_note || 'No owner\'s manual on file for this car.' } });
+      return;
+    }
     if (!this.state.miles) {
       this.setState({ ai: { status:'error', error:'Enter your current mileage first (screen 03, "Where\'s it at?").' } });
       return;
     }
-    const c = this.state.car, fd = new FormData();
-    fd.append('year', c.year); fd.append('make', c.make); fd.append('model', c.model); fd.append('trim', c.trim); fd.append('engine', c.engine);
+    const fd = new FormData();
+    fd.append('vehicle_id', String(this.state.vehicleId));  // the server reads the car, and picks its manual, from your garage
     fd.append('mileage', String(this.state.miles)); fd.append('driving', DRIVE_TEXT[this.state.drive]);
     fd.append('radius', String(this.state.radius ?? this.props.defaultRadius ?? 10));
-    fd.append('manual_name', DEMO_MANUAL);  // demo: always the saved Kia manual in backend/manuals/
-    const started = Date.now(), mileage = this.state.miles;
+    const started = Date.now(), mileage = this.state.miles, vid = this.state.vehicleId;
     this.setState({ ai: { status:'loading', started, mileage }, aiFb: {}, finalized: null, finErr: null });
-    fetch('/api/maintenance-check', { method:'POST', body: fd })
-      .then(r => r.json())
-      .then(j => this.setState({ ai: j.ok ? { status:'done', mileage, ...j } : { status:'error', error: j.error } }))
-      .catch(() => this.setState({ ai: { status:'error', error:'Could not reach the ShopSense server. Is it running? (see README)' } }));
+    this.api('/api/maintenance-check', { method:'POST', body: fd })
+      .then(j => { if (this.state.vehicleId === vid) this.setState({ ai: j.ok ? { status:'done', mileage, ...j } : { status:'error', error: j.error } }); })
+      .catch(e => { if (!e.signedOut) this.setState({ ai: { status:'error', error:'Could not reach the ShopSense server. Is it running? (see README)' } }); });
   }
   aiFeedback(item, action, extra) {
     const ai = this.state.ai;
     if (this.state.finalized) return;  // locked once the visit is saved
     this.setState(st => ({ aiFb: { ...st.aiFb, [item.service]: action } }));
     sendFeedback({ request_id: ai.request_id, screen:'04b AI maintenance check', ai_step:'maintenance_check (' + ai.mode + ')',
+      vehicle_id: this.state.vehicleId,
       action, meaning: action === 'accept' ? 'done at this visit' : 'not done', item: item.service, ai_status: item.status, ai_confidence: item.confidence, ...extra });
   }
-  state = { ai: { status:'idle' }, aiFb: {}, server: null, history: [], finalized: null, finErr: null, nextMiles: 0, nextMilesErr: null, acctName: 'Jordan', car: { year: '2025', make: 'Kia', model: 'Telluride', trim: 'EX', engine: '3.8L V6 GDi · FWD' }, miles: 0, drive: 'severe', history: 0, photoUrl: null, source: 'photo', lines: SERVICES.map(s => ({ ...s })), dec: {}, radius: null, sel: 'north' };
+  state = { ...freshState(), server: null };
   renderVals() {
     const lines = this.state.lines;
     const dec = Object.fromEntries(lines.map(s => [s.id, this.state.dec[s.id] ?? (s.v === 'not' ? 'decline' : 'approve')]));
@@ -688,6 +792,7 @@ class Component extends DCLogic {
     const dueNowList = res ? res.services.filter(s => s.status === 'needed_now').map(s => s.service) : null;
     const soon = res ? res.services.filter(s => s.status === 'due_soon') : null;
     const secs = ai.latency_ms ? (ai.latency_ms / 1000).toFixed(1) + ' s' : '';
+    const activeCar = this.state.vehicles.find(v => v.id === this.state.vehicleId), noManual = !!activeCar && !activeCar.manual;
     const aiStatusText = !srv ? 'Connecting to server…'
       : srv.offline ? 'Server not running: open this page via http://localhost:8000 (see README).'
       : ai.status === 'loading' ? 'Asking ' + (srv.mode === 'live' ? srv.model : 'simulator') + '… usually 10–20 s (longer for a full PDF manual).'
@@ -701,7 +806,9 @@ class Component extends DCLogic {
       milesShow: this.state.miles ? this.state.miles.toLocaleString() : '—',
       dueTitle: this.state.miles ? 'What\'s due at ' + this.state.miles.toLocaleString() + ' mi?' : 'What\'s due?',
       runLabel: ai.status === 'loading' ? 'Checking… ' : 'Check what\'s due + best shops →',
-      runBg: ai.status === 'loading' ? '#7a7674' : '#ec3013',
+      runBg: ai.status === 'loading' || noManual ? '#7a7674' : '#ec3013',
+      manualText: activeCar ? (activeCar.manual ? activeCar.manual.label : activeCar.manual_note || 'No owner\'s manual on file for this car.') : 'Add this car to your garage first.',
+      manualColor: noManual ? '#a8200b' : '#3d3a39',
       aiStatusText, aiStatusColor: ai.status === 'error' || (srv && srv.offline) ? '#a8200b' : '#5e5a58',
       hasAi: !!res, aiItems, aiShops, aiWarnings: res ? res.warnings : [],
       aiSchedule: res ? res.schedule_used.replace(/_/g, ' ') : '',
@@ -729,9 +836,35 @@ class Component extends DCLogic {
     const radii = [5, 10, 25, 50].map(r => ({ label: r + ' mi', bg: r === radius ? '#201e1d' : 'transparent', fg: r === radius ? '#f3f2f2' : '#201e1d', pick: () => this.setState({ radius: r }) }));
     const onFile = e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this.state.photoUrl) URL.revokeObjectURL(this.state.photoUrl); this.setState({ photoUrl: f.type.startsWith('image/') ? URL.createObjectURL(f) : null, fileName: f.name }); };
     const hasPhoto = !!this.state.photoUrl;
+    // ---- Sign in / create account (00, 01) and the garage (02-04) ----
+    const st = this.state, user = st.user, authErr = st.authErr;
+    const submit = kind => e => { e.preventDefault(); this.submitAuth(kind); };
+    const carLabel = v => [v.year, v.make, v.model, v.trim].filter(Boolean).join(' ');
+    const authVals = {
+      authEmail: st.authEmail, onAuthEmail: e => this.setState({ authEmail: e.target.value, authErr: null }),
+      authPassword: st.authPassword, onAuthPassword: e => this.setState({ authPassword: e.target.value, authErr: null }),
+      submitLogin: submit('login'), submitRegister: submit('register'),
+      hasLoginErr: !!authErr && authErr.kind === 'login', hasRegErr: !!authErr && authErr.kind === 'register',
+      authErrText: authErr ? authErr.msg : '',
+      loginLabel: st.authBusy ? 'Signing in…' : 'Sign in →',
+      registerLabel: st.authBusy ? 'Creating your account…' : 'Create account →',
+      authBtnBg: st.authBusy ? '#7a7674' : '#ec3013',
+      signOut: () => this.signOut(), addCar: () => this.addCar(), finishSetup: () => this.finishSetup(),
+      carTitle: st.vehicleId ? 'Edit your car' : 'Add your car',
+      setupLabel: st.setupBusy ? 'Saving…' : st.vehicleId ? 'Save changes →' : 'Add to my garage →',
+      setupBg: st.setupBusy ? '#7a7674' : '#ec3013',
+      hasSetupErr: !!st.setupErr, setupErr: st.setupErr || '',
+      hasActive: !!st.vehicleId, noActive: !st.vehicleId,
+      noActiveTitle: st.vehicles.length ? 'Pick a car' : 'No cars yet',
+      noActiveText: st.vehicles.length ? 'Choose one of your cars below, or add another.' : 'Add your car to see what maintenance is due and get a second opinion on quotes.',
+      otherCars: st.vehicles.filter(v => v.id !== st.vehicleId).map(v => ({
+        label: carLabel(v), sub: (v.mileage ? v.mileage.toLocaleString() + ' mi' : 'mileage not set') + ' · ' + (v.engine || ''),
+        pick: () => this.selectVehicle(v) })),
+    };
     return {
       ...extraVals,
       ...historyVals,
+      ...authVals,
       onFile, hasPhoto, noPhoto: !hasPhoto, photoBg: hasPhoto ? 'url("' + this.state.photoUrl + '")' : 'none',
       captureStatus: this.state.fileName ? 'Got it · ' + this.state.fileName.slice(0, 22) : 'Looking for a document…',
       captureHint: this.state.fileName ? 'tap shutter to retake' : 'hold steady',
@@ -749,7 +882,7 @@ class Component extends DCLogic {
         remove: () => this.setState(st => ({ lines: st.lines.filter(x => x.id !== l.id) })) })),
       addLine: () => this.setState(st => ({ lines: [...st.lines, { id: 'm' + nextId++, name: '', price: 0, manual: true, ...classify('', 0) }] })),
       acctName: this.state.acctName, onAcctName: e => this.setState({ acctName: e.target.value }),
-      greeting: 'Hi, ' + (this.state.acctName.trim() || 'there'),
+      greeting: 'Hi, ' + ((user && (user.name || user.email.split('@')[0])) || 'there'),
       car: { ...this.state.car, ...Object.fromEntries(['year','make','model','trim','engine'].map(k => ['on' + k[0].toUpperCase() + k.slice(1), e => { const val = e.target.value; this.setState(st => ({ car: { ...st.car, [k]: val } })); }])) },
       carShort: [this.state.car.year, this.state.car.model, this.state.car.trim].join(' '),
       carFull: [this.state.car.year, this.state.car.make, this.state.car.model, this.state.car.trim].join(' ') + ' · ' + this.state.car.engine,
@@ -757,8 +890,8 @@ class Component extends DCLogic {
       onMiles: e => this.setState({ miles: parseInt(e.target.value.replace(/\D/g, '').slice(0, 7)) || 0 }),
       driveLabel: { highway:'Highway', mixed:'Normal', severe:'Severe' }[this.state.drive],
       drives: [['highway','Mostly highway','Long trips, steady speeds'],['mixed','Mixed','Commuting, errands'],['severe','Severe / city','City stop-and-go, short trips, towing, extreme heat or cold']].map(([id,label,sub]) => ({ label, sub, bg: this.state.drive === id ? '#201e1d' : '#f3f2f2', fg: this.state.drive === id ? '#f3f2f2' : '#201e1d', pick: () => this.setState({ drive: id }) })),
-      historyLabel: this.state.history ? this.state.history + ' added' : 'photo · PDF',
-      onHistory: e => { const n = e.target.files ? e.target.files.length : 0; this.setState(st => ({ history: st.history + n })); },
+      historyLabel: this.state.invoices ? this.state.invoices + ' added' : 'photo · PDF',
+      onHistory: e => { const n = e.target.files ? e.target.files.length : 0; this.setState(st => ({ invoices: st.invoices + n })); },
       peerCount: '1,284',
       peerDesc: this.state.car.model + ' owners' + (this.state.miles ? ' at ' + Math.floor(this.state.miles / 10000) * 10 + 'k–' + (Math.floor(this.state.miles / 10000) * 10 + 10) + 'k mi' : '') + ', ' + ({ highway:'highway', mixed:'mixed', severe:'severe' }[this.state.drive]) + ' driving.',
       peers: [
@@ -803,18 +936,18 @@ class Component extends DCLogic {
 (function () {
   // Screen order and names (ids come from the mockup).
   const SCREENS = [
-    ['1g', '01 · Create account'], ['1h', '02 · Choose your vehicle'], ['1i', '03 · Mileage & history'],
+    ['1s', '00 · Sign in'], ['1g', '01 · Create account'], ['1h', '02 · Choose your vehicle'], ['1i', '03 · Mileage & history'],
     ['1j', '04 · Your garage'], ['1k', '04b · AI maintenance check'], ['1e', '05 · Scan your quote'],
     ['1f', '06 · Confirm the quote'], ['1a', '07 · Quote check'], ['1b', '08 · Nearby shops'],
     ['1c', '09 · Shop price estimate'], ['1d', '10 · Lifetime savings'],
   ];
-  const NAMES = Object.fromEntries(SCREENS), FIRST = '1g';
+  const NAMES = Object.fromEntries(SCREENS), FIRST = '1s';
+  // Signed-out visitors can only see these; signed-in users skip them. The app sets body[data-auth] once it knows.
+  const PUBLIC = new Set(['1s', '1g']);
   // Which button on which screen goes where: [screen, text on the button, destination].
+  // (Sign in, Create account, Finish setup and + Add car move on from their own handlers, once the server says OK.)
   const RULES = [
-    ['1g', /^(create account|continue with)/i, '1h'],
     ['1h', /^next: mileage/i, '1i'],
-    ['1i', /^finish setup/i, '1j'],
-    ['1j', /^\+ add car/i, '1h'],
     ['1e', /^type it/i, '1f'],
     ['1f', /^← retake/i, '1e'],
     ['1f', /^looks right/i, '1a'],
@@ -835,7 +968,9 @@ class Component extends DCLogic {
   const go = id => { if (location.hash.slice(1) !== id) location.hash = id; };
 
   function render() {
-    const id = current();
+    const id = current(), auth = document.body.dataset.auth;
+    if (auth === 'out' && !PUBLIC.has(id)) return go('1s');
+    if (auth === 'in' && PUBLIC.has(id)) return go('1j');
     document.body.dataset.screen = id;
     document.getElementById('app-title').textContent = NAMES[id];
     fit();
@@ -881,6 +1016,7 @@ class Component extends DCLogic {
   });
 
   window.addEventListener('hashchange', render);
+  window.addEventListener('shopsense-auth', () => { if (document.body.classList.contains('app')) render(); });
   window.addEventListener('resize', fit);
   document.getElementById('app-back').onclick = () => (history.length > 1 ? history.back() : go(FIRST));
   document.getElementById('app-all').onclick = () => setApp(false);

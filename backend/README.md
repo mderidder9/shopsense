@@ -56,13 +56,14 @@ In Notepad, replace `paste-your-key-here` with your key so the line reads `ANTHR
 1. Double-click **`start.bat`**. A black window opens; leave it open while you use the prototype.
    [Mac: `.venv/bin/python app.py`, then open http://localhost:8000]
 2. Your browser opens **http://localhost:8000**. If it says "can't connect", wait 2 seconds and refresh.
-3. The app opens as a **click-through phone app**, one screen at a time, starting at 01 Create account. Click through: Create account → Next: mileage → Finish setup → on the Garage screen, **"What's due? Ask ShopSense AI"** opens screen **04b**. The bar at the top has **← Back**, a link to the **AI log**, and **All screens** to switch to the side-by-side design view. "Click-through mode" switches back.
-   The demo car is set up already: 2025 Kia Telluride EX, FWD, severe/city driving.
-4. On screen **03**, type the car's **current mileage**. The field starts empty, and the AI check won't run without it.
-5. On screen 04b, click **Check what's due + best shops**. Expect about 10–15 seconds. The demo always checks against the saved Kia manual, `manuals/2025-Kia-Telluride-scheduled-maintenance.txt`. To demo another car, change `DEMO_MANUAL` near the top of the script in `frontend/index.html` to another file in `manuals/`.
+3. The app opens as a **click-through phone app**, one screen at a time, starting at **00 Sign in**. The first time, click **Create an account** (screen 01): your **email is your login**, the password needs 8+ characters, and the name is optional (it's used in the greeting). Then add your car on 02 → Next: mileage → **Add to my garage** on 03 → on the Garage screen, **"What's due? Ask ShopSense AI"** opens screen **04b**. The bar at the top has **← Back**, a link to the **AI log**, and **All screens** to switch to the side-by-side design view. "Click-through mode" switches back.
+   The car form starts on the demo car, a 2025 Kia Telluride EX, FWD, severe/city driving, because it's the only car with a manual on file so far.
+4. On screen **03**, type the car's **current mileage**. The AI check won't run without it.
+   **Accounts and garages:** each account has its own garage. **+ Add car** on the Garage adds another car; tap a car under the active one to switch to it. Each car keeps its own service history, and you can only see your own cars. **Sign out** is at the top of the Garage. You stay signed in for 30 days, even across server restarts.
+5. On screen 04b, click **Check what's due + best shops**. Expect about 10–15 seconds. The server picks the owner's manual that matches the active car's **year, make, model, trim and engine** (see *Manuals* below), and 04b shows which one under "Checked against". If no manual matches, the check doesn't run, so another car's manual is never sent. Today only the **2025 Kia Telluride with the 3.8L V6** has one.
 6. Optionally change the radius on screen 08 before running the check.
 7. For each item, click **Accept** (this service is done at this visit) or **Reject** (not done). Each click goes in the log.
-8. Click **Finalize maintenance**. This saves the visit (date, mileage, done, declined) to `data/service_history.json`. The next check for this car sends that history to the AI, so it counts from when each service was last done and still flags declined items. Items you didn't decide are saved as not done.
+8. Click **Finalize maintenance**. This saves the visit (date, mileage, done, declined) to the database, under that car in your garage. The next check for this car sends that history to the AI, so it counts from when each service was last done and still flags declined items. Items you didn't decide are saved as not done.
    After finalizing, the app goes home to the **Garage** (04). Its **"Back at the shop?"** card shows the last service and asks for the current mileage. At the next visit, type the mileage and click **Check what's due →**: the AI check runs on 04b using the saved history. A mileage that isn't higher than the last visit's is refused, to catch typos.
    Screen 04b shows the last saved visit. Click **Reset** next to it to clear the history between demos.
    Demo tip: both visits will be dated today, so a second visit at a higher mileage on the same day makes the AI add a warning asking you to confirm the dates.
@@ -130,6 +131,9 @@ Every AI request writes lines to **`logs/ai_log.jsonl`**, one event per line. Al
 | `feedback` | each Accept / Reject click on 04b (with the AI's status and confidence for that item), and each Approve / Decline click on screen 07 (07 is still simulated, so it's marked `quote_check (simulated)`) |
 | `finalize` | a saved visit: car, mileage, date, what was done, declined or left undecided, and every decision with the AI's status and confidence |
 | `history_reset` | the Reset link was used to clear a car's service history |
+| `account_created` | someone created an account (only the user id is logged, never the email or password) |
+
+Events from a signed-in user carry `user_id`, and car events carry `vehicle_id`, so you can tell people and cars apart.
 
 Notes:
 - **Confidence is the model's own estimate** (0–1) of how sure it is. It isn't a measured probability. Comparing it with your Accept/Reject clicks over time is how you'd test whether it's calibrated (Assignment #3's calibration target).
@@ -140,12 +144,30 @@ Notes:
 
 ---
 
+## Manuals: which car gets which manual
+
+`manuals/manuals.json` lists which file belongs to which car:
+```json
+{ "years": [2025], "make": "Kia", "model": "Telluride",
+  "trims": ["LX", "S", "EX", "SX", "SX X-Line", "SX X-Pro", "..."],
+  "engines": ["3.8L V6 GDi · FWD", "3.8L V6 GDi · AWD"],
+  "market": "US",
+  "file": "2025-Kia-Telluride-scheduled-maintenance.txt",
+  "label": "Kia's 2025 Telluride owner's manual (US) · ..." }
+```
+- A manual is used only when the car's **year, make, model, trim and engine** all match one entry, ignoring capitals. The engine includes the **drivetrain** (`· FWD` / `· AWD`), because schedules can differ by drivetrain: list both only if the manual covers both, as Kia's does.
+- **Every field is required.** An entry missing any of them is never used, so an incomplete entry can't send the wrong manual.
+- The server chooses the manual from the car saved in your garage; the browser can't pick a file. A car with no exact match gets a message on 04b saying what didn't match (year, trim or engine), and **nothing is sent to the model**.
+- **To add a car:** put its manual in `manuals/`, add an entry to `manuals.json`, and save. No restart needed. Spell make, model, trim and engine exactly as the car form on screen 02 lists them (e.g. `Toyota`, `CR-V`, `LX`, `2.4L I4`). If the form doesn't offer a trim or engine you need, add it to the form's lists in `frontend/index.html` too.
+- `market` records which country's manual it is (schedules differ by country). The app is US-only today, so it isn't checked.
+- The made-up `SAMPLE-schedule-for-testing.txt` isn't listed, so it's never used for a real car.
+
 ## Manuals: tips
 
-- PDFs up to **32 MB and 600 pages** work. Most full manuals fit, but bigger means slower and costlier, roughly $0.50–$1.50 per check for a 500-page manual on Opus. **The cheapest and fastest option is to upload only the maintenance-schedule pages.** Use "Print → Microsoft Print to PDF" with a page range.
+- PDFs up to **32 MB and 600 pages** work. Most full manuals fit, but bigger means slower and costlier, roughly $0.50–$1.50 per check for a 500-page manual on Opus. **The cheapest and fastest option is to save only the maintenance-schedule pages.** Use "Print → Microsoft Print to PDF" with a page range.
 - Checking the same manual again within about 5 minutes is cheaper because the provider caches it.
-- Put manuals you'll reuse in the `manuals/` folder, with the make in the file name. Files can be PDF or `.txt`. `.txt` works well for web-page manuals: `2025-Kia-Telluride-scheduled-maintenance.txt` was built from Kia's online manual page.
-- If the manual doesn't match the car, the AI is told to say so, lower its confidence, and show a warning.
+- Files can be PDF or `.txt`. `.txt` works well for web-page manuals: `2025-Kia-Telluride-scheduled-maintenance.txt` was built from Kia's online manual page.
+- If a listed manual still doesn't fit the car (for example a different model year or engine), the AI is told to say so, lower its confidence, and show a warning.
 
 ## Troubleshooting
 
@@ -159,6 +181,8 @@ Notes:
 | "Server not running" on 04b | Start `start.bat`, and open the page via http://localhost:8000. |
 | `setup.bat` says Python not found | Redo step 1, then **close and reopen** any windows. |
 | Port 8000 already in use | Change `"port"` in `config.json` (e.g. 8001) and open that address. |
+| Forgot a password | There's no reset yet. Create a new account, or start fresh (below). |
+| Start completely fresh (all accounts, cars, history) | Stop the server, delete `data/shopsense.db`, start again. |
 
 ## Keeping keys safe
 
@@ -166,11 +190,19 @@ Notes:
 - If a key is ever exposed, delete it in the Console (API Keys) and make a new one.
 - The server only listens on your own laptop (`127.0.0.1`), so other people on the Wi-Fi can't use your key through it.
 
+## Accounts: how they're stored
+
+- Everything lives in one SQLite file, `data/shopsense.db`. It's created on first run, and SQLite comes with Python, so there's nothing to install. Tables: `users` (email, hashed password, name), `vehicles` (each belongs to one user), `visits` (each belongs to one vehicle). See `db.py`.
+- Passwords are stored only as salted hashes (Werkzeug's `generate_password_hash`), never as plain text.
+- Signing in sets a login cookie signed with a random key in `data/secret_key`, made on first run. Deleting that file signs everyone out.
+- Both files are in `.gitignore`. Like `.env`, **don't share them**: the database holds everyone's accounts.
+- This is a class prototype, not hardened for the internet: there's no password reset, email verification, or limit on login attempts yet.
+
 ## What's in this folder
 
 ```
 backend/
-  app.py            the local web server (serves the prototype, /log page, API routes)
+  app.py            the local web server (serves the prototype, /log page, sign-in and API routes)
   ai.py             THE AI CALL: run_maintenance_check() - instructions, input, output format
   simulated.py      canned answer used when "mode" is "simulated"
   ai_log.py         writes logs/ai_log.jsonl
@@ -178,9 +210,12 @@ backend/
   .env.example      template - copy to .env and add your key
   .env              YOUR key (never share)
   data/shops.json   sample nearby shops (from the mockup)
-  data/service_history.json   saved visits (created by "Finalize maintenance"; delete it or use Reset to start over)
-  service_history.py          reads/writes that file and formats it for the AI
-  manuals/          owner's manuals; includes a made-up SAMPLE schedule for testing
+  db.py             the database: accounts, each account's cars, each car's saved visits
+  data/shopsense.db           that database (created on first run; delete it to start over)
+  data/secret_key             signs the login cookie (created on first run; never share)
+  service_history.py          formats a car's saved visits for the AI
+  manuals/          owner's manuals, plus manuals.json saying which car each one is for
+  manuals.py        picks the manual for a car from manuals.json
   frontend/         copy of the ShopSense mockup, wired to the backend (original mockup untouched)
   logs/             created on first run
   setup.bat / start.bat   double-click helpers

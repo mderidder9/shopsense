@@ -17,7 +17,9 @@ This is a class prototype for *43120 – Building an AI Company*.
 
 1. Install Python 3.12 and get your own Anthropic API key. Step-by-step instructions are in [`backend/README.md`](backend/README.md).
 2. In `backend/`, double-click `setup.bat` and paste your key when Notepad opens.
-3. Double-click `start.bat`. The app opens at http://localhost:8000.
+3. Double-click `start.bat`. The app opens at http://localhost:8000. Create an account (your email is the login), then add your car.
+
+Accounts, each account's garage of cars, and their service history are saved in a local SQLite database, `backend/data/shopsense.db`. It's created on first run and excluded from this repo.
 
 Your API key goes in `backend/.env`, which is excluded from this repo. **Never commit it.**
 

@@ -15,3 +15,8 @@ backend/data/service_history.json
 ~$*
 Thumbs.db
 desktop.ini
+
+# Local database (accounts, garages, service history) and the login-cookie signing key
+backend/data/shopsense.db
+backend/data/shopsense.db-*
+backend/data/secret_key
