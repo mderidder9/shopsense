@@ -6,6 +6,8 @@ This folder runs the ShopSense prototype on your own laptop and connects **one**
 > Input: year, make, model, mileage (plus trim, engine, driving style) and the car's **owner's manual**.
 > Output: each service marked *needed now / due soon / inspect / not due*, with the manual page it came from, a confidence score, and up to 3 recommended shops with reasons.
 
+**Unscheduled visits.** On screen 04b, "Why are you here today?" can be *Scheduled maintenance* (the normal visit) or *Something came up*: a flat tire, windshield or glass damage, a warning light, a noise or leak, or *Other* with a short note. For an unscheduled visit, the AI adds a separate card with the likely fix, how urgent it is, what to ask the shop, and any scheduled items due that are worth doing on the same trip. The scheduled list itself doesn't change. A repair is saved in the visit history as "unscheduled" and never resets a maintenance interval.
+
 Everything else in the prototype (photo reading, quote check, prices, savings, peer stats) is still **simulated**.
 
 | What | Real or simulated |

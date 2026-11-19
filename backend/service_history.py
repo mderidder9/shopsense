@@ -21,6 +21,13 @@ def history_for_prompt(visits: list[dict]) -> str:
         if v.get("details"):
             # Includes what was due for each item, e.g. an inspection vs. a replacement.
             for d in v["details"]:
+                if d.get("kind") == "unscheduled":
+                    # A surprise repair (flat tire, cracked glass...): recorded, but never scheduled maintenance.
+                    done = "REPAIRED" if d["decision"] == "repaired" else "NOT REPAIRED"
+                    note = f' Driver\'s note: "{d["note"]}".' if d.get("note") else ""
+                    lines.append(f"    UNSCHEDULED ({d.get('reason')}) - {done}: {d['service'].rstrip('.')}.{note} "
+                                 "Not scheduled maintenance: it does not reset any interval.")
+                    continue
                 lines.append(f"    {d['decision'].upper()}: {d['service']}  (what was due then: {d.get('what_was_due') or '?'} "
                              f"| manual interval: {d.get('interval') or '?'})")
         else:

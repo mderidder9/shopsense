@@ -18,7 +18,9 @@ Routes
   POST  /api/vehicles/<id>/finalize     save this visit (Accepted = done, Rejected = declined)
   POST  /api/vehicles/<id>/history/reset
   POST  /api/maintenance-check          runs the AI step for one of your cars (live or simulated, per config.json),
-                                        using the manual for that exact car (manuals/manuals.json)
+                                        using the manual for that exact car (manuals/manuals.json).
+                                        visit_reason (scheduled | tire | glass | warning_light | noise_leak | other)
+                                        and visit_note describe an unscheduled problem, if there is one.
   POST  /api/feedback                   records Approve / Decline / Accept / Reject clicks
 """
 import html
@@ -38,7 +40,7 @@ load_dotenv(BASE / ".env", encoding="utf-8-sig")  # loads ANTHROPIC_API_KEY into
 
 import os  # noqa: E402
 
-from ai import AIError, load_config, run_maintenance_check  # noqa: E402
+from ai import MAX_NOTE_CHARS, VISIT_REASONS, AIError, load_config, run_maintenance_check  # noqa: E402
 from ai_log import log_event, read_events  # noqa: E402
 import db  # noqa: E402
 import manuals  # noqa: E402
@@ -244,11 +246,13 @@ def finalize(vehicle_id):
         return NOT_YOURS
     data = request.get_json(silent=True) or {}
     items = data.get("items", [])
+    issue = data.get("issue") or {}  # the unscheduled problem, if this was an unscheduled visit
+    issue_decided = issue.get("decision") in ("repaired", "not_repaired")
     try:
         mileage = int(data["mileage"])
     except (KeyError, TypeError, ValueError):
         return jsonify(ok=False, error="Missing mileage for this visit."), 400
-    if not any(i.get("decision") in ("accept", "reject") for i in items):
+    if not issue_decided and not any(i.get("decision") in ("accept", "reject") for i in items):
         return jsonify(ok=False, error="Accept or reject at least one item first."), 400
     visit = {
         "date": date.today().isoformat(),
@@ -262,6 +266,14 @@ def finalize(vehicle_id):
                      "ai_status": i.get("status"), "what_was_due": i.get("explanation"), "interval": i.get("interval")}
                     for i in items if i.get("decision") in ("accept", "reject")],
     }
+    if issue_decided:
+        # Kept apart from scheduled maintenance: done/declined above list only scheduled items,
+        # and the AI is told this repair doesn't reset any interval (see service_history.py).
+        visit["details"].append({
+            "kind": "unscheduled", "service": issue.get("likely_repair") or "Unscheduled repair",
+            "decision": issue["decision"], "reason": VISIT_REASONS.get(issue.get("reason"), "Other"),
+            "note": " ".join(str(issue.get("note", "")).split())[:MAX_NOTE_CHARS],
+            "what_was_due": issue.get("issue_summary")})
     visits = db.add_visit(car["id"], visit)
     log_event("finalize", data.get("request_id"), screen="04b AI maintenance check",
               user_id=g.user["id"], vehicle_id=car["id"], vehicle=service_history.vehicle_key(car), visit=visit,
@@ -324,10 +336,17 @@ def maintenance_check():
         if vehicle["mileage"] <= 0:
             raise AIError("Enter the current mileage first.")
         radius = float(f.get("radius", 10))
+        # Why the driver came in. Scheduled is the normal visit; anything else is an unscheduled problem.
+        reason = f.get("visit_reason") or "scheduled"
+        note = " ".join(f.get("visit_note", "").split())[:MAX_NOTE_CHARS]
+        if reason not in VISIT_REASONS:
+            raise AIError("Pick why you're at the shop today.")
+        if reason == "other" and not note:
+            raise AIError("For \"Other\", add a short note on what happened.")
         manual = manual_for(car)
         history = db.get_visits(car["id"])
         return jsonify(ok=True, **run_maintenance_check(
-            vehicle, manual, radius, history=history,
+            vehicle, manual, radius, history=history, visit={"reason": reason, "note": note},
             log_context={"user_id": g.user["id"], "vehicle_id": car["id"]}))
     except AIError as e:
         return jsonify(ok=False, error=str(e)), 400

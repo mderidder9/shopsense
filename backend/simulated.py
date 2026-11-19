@@ -5,7 +5,32 @@ Numbers match the original mockup (2017 Accord at 68,420 mi).
 """
 
 
-def simulated_result(vehicle: dict, shops: list[dict]) -> dict:
+# Canned unscheduled problems, so the "Something came up" path can be demoed without the AI.
+SIMULATED_ISSUES = {
+    "tire": ("Flat or damaged tire.", "Tire plug or patch, or a new tire if the sidewall is damaged.", "fix_today",
+             "Ask whether the puncture is in the tread (patchable) or the sidewall (needs a new tire).",
+             ["Check the spare", "Check the other tires' tread and pressure"], True),
+    "glass": ("Rock chip or crack in the windshield.", "Chip repair, or a new windshield if the crack is long or in your view.",
+              "fix_soon", "Ask if it can be repaired instead of replaced, and whether your insurance covers glass.",
+              ["Check the wipers aren't catching on the chip"], True),
+}
+DEFAULT_ISSUE = ("Unscheduled problem (see your note).", "Depends on what the shop finds.", "fix_soon",
+                 "Ask the shop to show you the problem before approving any repair.", [], False)
+
+
+def simulated_issue(visit: dict | None) -> dict:
+    reason = (visit or {}).get("reason", "scheduled")
+    if reason == "scheduled":
+        return {"applies": False, "issue_summary": "", "likely_repair": "", "urgency": "none", "what_to_ask_shop": "",
+                "related_checks": [], "while_youre_there": [], "safety_critical": False, "confidence": 0}
+    summary, repair, urgency, ask, checks, safety = SIMULATED_ISSUES.get(reason, DEFAULT_ISSUE)
+    return {"applies": True, "issue_summary": "SIMULATED · " + summary, "likely_repair": repair, "urgency": urgency,
+            "what_to_ask_shop": ask, "related_checks": checks,
+            "while_youre_there": ["Engine oil & filter", "Tire rotation"],  # the needed_now items below
+            "safety_critical": safety, "confidence": 0.6}
+
+
+def simulated_result(vehicle: dict, shops: list[dict], visit: dict | None = None) -> dict:
     name = f"{vehicle['year']} {vehicle['make']} {vehicle['model']}"
     ranked = sorted(
         (s for s in shops if s["id"] != "here"),
@@ -16,6 +41,7 @@ def simulated_result(vehicle: dict, shops: list[dict]) -> dict:
         "manual_matches_vehicle": "yes",
         "manual_match_note": "Simulated response - the manual was not read.",
         "schedule_used": "normal",
+        "unscheduled_issue": simulated_issue(visit),
         "services": [
             {"service": "Engine oil & filter", "status": "needed_now", "next_due_miles": 67500,
              "interval_from_manual": "Every 7,500 mi", "manual_reference": "Simulated",
