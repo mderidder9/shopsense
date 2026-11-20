@@ -193,12 +193,27 @@
 <div style="font:400 13px/1.4 Archivo;color:{{ manualColor }}">{{ manualText }}</div>
 <span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58;margin-top:4px">Service history</span>
 <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><div style="font:400 13px/1.4 Archivo;color:#3d3a39">{{ historyText }}</div><sc-if value="{{ hasHistory }}" hint-placeholder-val="{{ false }}"><button onClick="{{ resetHistory }}" style="flex:none;padding:0;font:600 12px Archivo;background:transparent;border:0;color:#a8200b;text-decoration:underline">Reset</button></sc-if></div>
+<label style="display:flex;flex-direction:column;gap:6px;margin-top:4px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Why are you here today?</span><select value="{{ visitReason }}" onChange="{{ onVisitReason }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%;appearance:auto"><option value="scheduled">Scheduled maintenance</option><option value="tire">Something came up · flat or damaged tire</option><option value="glass">Something came up · windshield or glass</option><option value="warning_light">Something came up · warning light</option><option value="noise_leak">Something came up · noise, leak or smell</option><option value="other">Something came up · other</option></select></label>
+<sc-if value="{{ showVisitNote }}" hint-placeholder-val="{{ false }}"><label style="display:flex;flex-direction:column;gap:6px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">{{ visitNoteLabel }}</span><input type="text" maxlength="500" placeholder="e.g. a pebble cracked the windshield on the highway" value="{{ visitNote }}" onChange="{{ onVisitNote }}" style="font:600 15px Archivo;padding:11px 10px;border:2px solid #201e1d;background:#fff;color:#201e1d;border-radius:0;width:100%"></label><div style="font:400 12px/1.4 Archivo;color:#5e5a58">Your scheduled maintenance stays on its own schedule. ShopSense just flags anything that's due while you're there.</div></sc-if>
 <button onClick="{{ runAi }}" style="width:100%;text-align:left;padding:14px 16px;font:600 15px Archivo;background:{{ runBg }};color:#fff;border:0">{{ runLabel }}</button>
 <div style="font:400 12px/1.4 'JetBrains Mono',monospace;color:{{ aiStatusColor }}">{{ aiStatusText }}</div>
 </div>
 <sc-if value="{{ hasAi }}" hint-placeholder-val="{{ false }}">
 <sc-for list="{{ aiWarnings }}" as="w" hint-placeholder-count="1"><div style="padding:10px 20px;background:#fbe4df;border-bottom:1px solid #ec3013;font:400 12px/1.4 Archivo;color:#a8200b">⚠ {{ w }}</div></sc-for>
-<div style="padding:14px 20px 6px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Maintenance · per {{ aiSchedule }} schedule</div>
+<sc-if value="{{ hasIssue }}" hint-placeholder-val="{{ false }}"><div style="padding:14px 20px;border-bottom:2px solid #201e1d;background:#fff;display:flex;flex-direction:column;gap:7px">
+<div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px"><span style="font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#a8200b">Unscheduled · what came up</span><span style="font:600 11px 'JetBrains Mono',monospace;color:#5e5a58;white-space:nowrap">{{ issue.conf }} sure</span></div>
+<span style="align-self:flex-start;font:600 10px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;background:{{ issue.urgBg }};color:#fff">{{ issue.urgLabel }}</span>
+<div style="font:600 15px/1.25 Archivo">{{ issue.issue_summary }}</div>
+<div style="font:400 12.5px/1.4 Archivo;color:#3d3a39;text-wrap:pretty"><b>Likely fix:</b> {{ issue.likely_repair }}</div>
+<div style="font:400 12.5px/1.4 Archivo;color:#3d3a39;text-wrap:pretty"><b>Ask the shop:</b> {{ issue.what_to_ask_shop }}</div>
+<sc-if value="{{ issue.hasChecks }}" hint-placeholder-val="{{ false }}"><div style="font:400 12.5px/1.4 Archivo;color:#3d3a39;text-wrap:pretty"><b>Also check:</b> {{ issue.checksText }}</div></sc-if>
+<div style="font:400 12.5px/1.4 Archivo;color:#3d3a39;text-wrap:pretty"><b>Since you're there:</b> {{ issue.whileText }}</div>
+<div style="display:flex;gap:0">
+<button onClick="{{ issue.repaired }}" style="flex:1;text-align:left;padding:7px 10px;font:600 12px Archivo;border:2px solid #201e1d;background:{{ issue.repBg }};color:{{ issue.repFg }}">Repaired</button>
+<button onClick="{{ issue.notRepaired }}" style="flex:1;text-align:left;padding:7px 10px;font:600 12px Archivo;border:2px solid #201e1d;border-left:0;background:{{ issue.notBg }};color:{{ issue.notFg }}">Not repaired</button>
+</div>
+</div></sc-if>
+<div style="padding:14px 20px 6px;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:#5e5a58">Scheduled maintenance · per {{ aiSchedule }} schedule</div>
 <sc-for list="{{ aiItems }}" as="ai" hint-placeholder-count="4">
 <div style="padding:12px 20px;border-bottom:1px solid #c9c6c5;display:flex;flex-direction:column;gap:6px">
 <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
@@ -559,7 +574,7 @@ const setAuthFlag = on => { document.body.dataset.auth = on ? 'in' : 'out'; wind
 const carState = v => ({ vehicleId: v.id, car: Object.fromEntries(CAR_KEYS.map(k => [k, v[k] || ''])), miles: v.mileage || 0, drive: v.driving || 'mixed' });
 const NEW_CAR = () => ({ vehicleId: null, car: { ...DEFAULT_CAR }, miles: 0, drive: 'severe' });
 // The AI check and service history belong to one car; cleared whenever the active car changes.
-const NO_CHECK = () => ({ ai: { status:'idle' }, aiFb: {}, history: [], finalized: null, finErr: null, nextMiles: 0, nextMilesErr: null });
+const NO_CHECK = () => ({ ai: { status:'idle' }, aiFb: {}, issueFb: null, visitReason: 'scheduled', visitNote: '', history: [], finalized: null, finErr: null, nextMiles: 0, nextMilesErr: null });
 const freshState = () => ({
   user: null, vehicles: [], acctName: '', authEmail: '', authPassword: '', authErr: null, authBusy: false,
   ...NEW_CAR(), setupErr: null, setupBusy: false,   // the active car (screens 02-04b); vehicleId null = a new car being set up
@@ -637,8 +652,10 @@ class Component extends DCLogic {
     if (ai.status !== 'done' || this.state.finalized || !vid) return;
     const items = ai.result.services.map(s => ({ service: s.service, status: s.status, confidence: s.confidence,
       explanation: s.explanation, interval: s.interval_from_manual, decision: this.state.aiFb[s.service] || null }));
-    if (!items.some(i => i.decision)) { this.setState({ finErr: 'Accept or reject at least one item first.' }); return; }
-    this.api('/api/vehicles/' + vid + '/finalize', jsonReq('POST', { request_id: ai.request_id, mileage: ai.mileage, items }))
+    const iss = ai.result.unscheduled_issue, issue = iss && iss.applies && this.state.issueFb
+      ? { ...iss, reason: ai.visit.reason, note: ai.visit.note, decision: this.state.issueFb } : null;
+    if (!issue && !items.some(i => i.decision)) { this.setState({ finErr: 'Accept or reject at least one item first.' }); return; }
+    this.api('/api/vehicles/' + vid + '/finalize', jsonReq('POST', { request_id: ai.request_id, mileage: ai.mileage, items, issue }))
       .then(j => {
         if (!j.ok) { this.setState({ finErr: j.error }); return; }
         this.setState(st => ({ finalized: j.visit, history: j.visits, finErr: null, nextMiles: 0, nextMilesErr: null,
@@ -677,14 +694,20 @@ class Component extends DCLogic {
       this.setState({ ai: { status:'error', error:'Enter your current mileage first (screen 03, "Where\'s it at?").' } });
       return;
     }
+    const visit = { reason: this.state.visitReason, note: this.state.visitNote.trim() };
+    if (visit.reason === 'other' && !visit.note) {
+      this.setState({ ai: { status:'error', error:'For "Other", add a short note on what happened.' } });
+      return;
+    }
     const fd = new FormData();
+    fd.append('visit_reason', visit.reason); fd.append('visit_note', visit.note);
     fd.append('vehicle_id', String(this.state.vehicleId));  // the server reads the car, and picks its manual, from your garage
     fd.append('mileage', String(this.state.miles)); fd.append('driving', DRIVE_TEXT[this.state.drive]);
     fd.append('radius', String(this.state.radius ?? this.props.defaultRadius ?? 10));
     const started = Date.now(), mileage = this.state.miles, vid = this.state.vehicleId;
-    this.setState({ ai: { status:'loading', started, mileage }, aiFb: {}, finalized: null, finErr: null });
+    this.setState({ ai: { status:'loading', started, mileage }, aiFb: {}, issueFb: null, finalized: null, finErr: null });
     this.api('/api/maintenance-check', { method:'POST', body: fd })
-      .then(j => { if (this.state.vehicleId === vid) this.setState({ ai: j.ok ? { status:'done', mileage, ...j } : { status:'error', error: j.error } }); })
+      .then(j => { if (this.state.vehicleId === vid) this.setState({ ai: j.ok ? { status:'done', mileage, visit, ...j } : { status:'error', error: j.error } }); })
       .catch(e => { if (!e.signedOut) this.setState({ ai: { status:'error', error:'Could not reach the ShopSense server. Is it running? (see README)' } }); });
   }
   aiFeedback(item, action, extra) {
@@ -745,6 +768,24 @@ class Component extends DCLogic {
         accept: () => this.aiFeedback(sv, 'accept'),
         reject: () => this.aiFeedback(sv, 'reject') };
     }) : [];
+    // ---- Unscheduled problem (flat tire, cracked windshield...): its own card, apart from the schedule ----
+    const URGENCY = { stop_driving: ['Stop driving · get it towed or fixed', '#a8200b'], fix_today: ['Fix today · drive only to a shop', '#ec3013'],
+      fix_soon: ['Fix within days', '#201e1d'], can_wait: ['Can wait', '#7a7674'], none: ['', '#7a7674'] };
+    const iss = res && res.unscheduled_issue && res.unscheduled_issue.applies ? res.unscheduled_issue : null;
+    const issueSet = d => () => { if (!this.state.finalized) this.setState({ issueFb: d }); };
+    const [repBg, repFg] = fbBtn(this.state.issueFb === 'repaired', '#201e1d'), [notBg, notFg] = fbBtn(this.state.issueFb === 'not_repaired', '#ec3013');
+    const issue = iss ? { ...iss, conf: pct(iss.confidence), urgLabel: (URGENCY[iss.urgency] || URGENCY.fix_soon)[0], urgBg: (URGENCY[iss.urgency] || URGENCY.fix_soon)[1],
+      hasChecks: iss.related_checks.length > 0, checksText: iss.related_checks.join(' · '),
+      whileText: iss.while_youre_there.length ? iss.while_youre_there.join(' · ') + ' (due on your schedule, see below)' : 'Nothing on your schedule is due yet.',
+      repBg, repFg, notBg, notFg, repaired: issueSet('repaired'), notRepaired: issueSet('not_repaired') } : {};
+    const visitVals = {
+      visitReason: this.state.visitReason, visitNote: this.state.visitNote,
+      onVisitReason: e => this.setState({ visitReason: e.target.value }),
+      onVisitNote: e => this.setState({ visitNote: e.target.value }),
+      showVisitNote: this.state.visitReason !== 'scheduled',
+      visitNoteLabel: this.state.visitReason === 'other' ? 'What happened? · required' : 'What happened? · optional',
+      hasIssue: !!iss, issue,
+    };
     // ---- Service history + Finalize maintenance ----
     const hist = this.state.history || [], lastVisit = hist[hist.length - 1];
     const niceDate = d => new Date(d + 'T00:00').toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
@@ -759,10 +800,12 @@ class Component extends DCLogic {
         : 'No visits saved yet. The AI estimates from the schedule alone.',
       resetHistory: () => this.resetHistory(),
       finalize: () => this.finalize(),
-      finLabel: fin ? '✓ Maintenance finalized' : 'Finalize maintenance (' + nAcc + ' accepted · ' + nRej + ' rejected)',
-      finBg: fin ? '#201e1d' : (nAcc + nRej > 0 ? '#ec3013' : '#7a7674'),
+      finLabel: fin ? '✓ Maintenance finalized' : 'Finalize maintenance (' + nAcc + ' accepted · ' + nRej + ' rejected' + (iss ? ' · repair ' + (this.state.issueFb ? 'marked' : 'not marked') : '') + ')',
+      finBg: fin ? '#201e1d' : (nAcc + nRej > 0 || (iss && this.state.issueFb) ? '#ec3013' : '#7a7674'),
       finStatus: fin
-        ? 'Saved for this visit at ' + fin.mileage.toLocaleString() + ' mi. Done: ' + (fin.done.join(', ') || 'nothing') + '.' + (fin.declined.length ? ' Declined: ' + fin.declined.join(', ') + '.' : '') + ' The next check will count from here.'
+        ? 'Saved for this visit at ' + fin.mileage.toLocaleString() + ' mi. Done: ' + (fin.done.join(', ') || 'nothing') + '.' + (fin.declined.length ? ' Declined: ' + fin.declined.join(', ') + '.' : '') +
+          fin.details.filter(d => d.kind === 'unscheduled').map(d => ' Unscheduled repair (' + (d.decision === 'repaired' ? 'repaired' : 'not repaired') + '): ' + d.service.replace(/\.$/, '') + '. It doesn\'t change your schedule.').join('') +
+          ' The next check will count from here.'
         : this.state.finErr ? '✕ ' + this.state.finErr
         : 'Accept = done at this visit · Reject = not done.' + (nAcc + nRej > 0 && nUnd > 0 ? ' ' + nUnd + ' not decided yet (saved as not done).' : ''),
       finStatusColor: this.state.finErr && !fin ? '#a8200b' : '#3d3a39',
@@ -810,6 +853,7 @@ class Component extends DCLogic {
       manualText: activeCar ? (activeCar.manual ? activeCar.manual.label : activeCar.manual_note || 'No owner\'s manual on file for this car.') : 'Add this car to your garage first.',
       manualColor: noManual ? '#a8200b' : '#3d3a39',
       aiStatusText, aiStatusColor: ai.status === 'error' || (srv && srv.offline) ? '#a8200b' : '#5e5a58',
+      ...visitVals,
       hasAi: !!res, aiItems, aiShops, aiWarnings: res ? res.warnings : [],
       aiSchedule: res ? res.schedule_used.replace(/_/g, ' ') : '',
       dueNow: dueNowList ? (dueNowList.join(' · ') || 'Nothing due') : 'Oil & filter · Rotation',
